@@ -1,0 +1,51 @@
+<template name="f2ecf90a">
+  <view class="_div data-v-64a1b26d pages_teacher_detail">
+    <view class="_div data-v-64a1b26d course_container">
+      <view class="_div data-v-64a1b26d course_detail">
+        <view class="_div data-v-64a1b26d course_share" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+          <image src="/static/images/share.png" alt="暂无图片" class="_img data-v-64a1b26d"></image>
+        </view>
+        <view class="_div data-v-64a1b26d course_poster">
+          <image src="{{courseInfo.img}}" alt="暂无图片" class="_img data-v-64a1b26d"></image>
+        </view>
+      </view>
+      <view class="_div data-v-64a1b26d lesson_describe">
+        <view class="_div data-v-64a1b26d content_tab">
+          <view class="_div data-v-64a1b26d _tabs {{tab.active ? 'active' : ''}}" wx:key="tab.tabId" key="{{tab.tabId}}" bindtap="handleProxy" data-eventid="{{'1_'+index}}" data-comkey="{{$k}}" wx:for="{{tabs}}" wx:for-index="index" wx:for-item="tab">
+            {{tab.label}}
+          </view>
+        </view>
+        <view wx:if="{{tab === 1}}" class="_div data-v-64a1b26d content_describe">
+          <rich-text nodes="{{courseInfo.htmlForContent}}" class="_div data-v-64a1b26d"></rich-text>
+        </view>
+        <view wx:if="{{tab === 2}}" class="_div data-v-64a1b26d content_describe">
+          <rich-text nodes="{{courseInfo.htmlForLesson}}" class="_div data-v-64a1b26d"></rich-text>
+        </view>
+        <view class="_div data-v-64a1b26d course_commet">
+          <view class="_div data-v-64a1b26d _commet_title"><label class="_span data-v-64a1b26d commet_line"> 学员评论 </label></view>
+          <view class="_div data-v-64a1b26d commet_list" wx:key="comment.id" key="{{comment.id}}" wx:for="{{comments}}" wx:for-index="index" wx:for-item="comment">
+            <view class="_div data-v-64a1b26d commet_head">
+              <view class="_div data-v-64a1b26d _avatar">
+                <image src="{{comment.img}}" alt class="_img data-v-64a1b26d"></image>
+              </view>
+              <view class="_div data-v-64a1b26d _nickname">
+                {{comment.nickname}}
+              </view>
+              <view class="_div data-v-64a1b26d fabulous_img">
+                <image wx:if="{{!comment.isFabulous}}" src="/static/images/fabulous.png" bindtap="handleProxy" alt data-eventid="{{'2_'+index}}" data-comkey="{{$k}}" class="_img data-v-64a1b26d"></image>
+                <image wx:if="{{comment.isFabulous}}" src="/static/images/fabulous_active.png" bindtap="handleProxy" alt data-eventid="{{'3_'+index}}" data-comkey="{{$k}}" class="_img data-v-64a1b26d"></image>
+              </view>
+            </view>
+            <view class="_div data-v-64a1b26d commet_desc">
+              {{comment.comment}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-64a1b26d footer_button">
+      <view class="_div data-v-64a1b26d course_recommend"> 我要推荐 </view>
+      <view class="_div data-v-64a1b26d just_purchase"> 立即购买 </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,31 @@
+<import src="/components/tabBar.vue.wxml" /><template name="802a9cb4">
+  <view class="_div data-v-b7a8e218 pages_lesson_entry">
+    <view class="_div data-v-b7a8e218 search_body">
+      <view class="_div data-v-b7a8e218 search_lesson">
+        <image src="/static/images/search.png" alt class="_img data-v-b7a8e218"></image>   <input type="text" placeholder="请输入关键字搜索" placeholder-style="color:rgba(153,153,153,1);font-size:24rpx;text-align: center" class="_input data-v-b7a8e218" />
+      </view>
+    </view>
+    <view class="_div data-v-b7a8e218 course_container">
+      <view class="_div data-v-b7a8e218 course_list" wx:key="item.id" key="{{item.id}}" bindtap="handleProxy" data-eventid="{{'1_'+index}}" data-comkey="{{$k}}" wx:for="{{courseList}}" wx:for-index="index" wx:for-item="item">
+        <view class="_div data-v-b7a8e218 course_share" catchtouchstart="handleProxy" data-eventid="{{'0_'+index}}" data-comkey="{{$k}}">
+          <image src="/static/images/share.png" alt="暂无图片" class="_img data-v-b7a8e218"></image>
+        </view>
+        <view class="_div data-v-b7a8e218 course_poster">
+          <image src="{{item.img}}" alt="暂无图片" class="_img data-v-b7a8e218"></image>
+        </view>
+        <view class="_div data-v-b7a8e218 describe_container">
+          <view class="_p data-v-b7a8e218 course_label">
+            {{item.label}}
+          </view>
+          <view class="_div data-v-b7a8e218 course_name_title"><label class="_span data-v-b7a8e218 _name">{{item.name}}</label>  <label class="_span data-v-b7a8e218 _title">{{item.title}}</label></view>
+          <view class="_div data-v-b7a8e218 scan_times">
+            <image src="/static/images/scan.png" alt class="_img data-v-b7a8e218"></image>  <label class="_span data-v-b7a8e218 _times">{{item.scantimes}}万人次</label>
+          </view>
+          <view class="_div data-v-b7a8e218 tag_list"><label wx:key="tag+el" key="{{tag+el}}" class="_span data-v-b7a8e218 _tags" wx:for="{{item.tagList}}" wx:for-index="el" wx:for-item="tag">{{tag}}</label></view>
+          <view class="_div data-v-b7a8e218 course_price"> ￥{{item.price}}
+          </view>
+        </view>
+      </view>
+    </view> <template data="{{...$root[$kk+'0'], $root}}" is="3c52e9f2"></template>
+  </view>
+</template>

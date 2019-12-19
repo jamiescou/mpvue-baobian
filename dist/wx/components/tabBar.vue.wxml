@@ -1,0 +1,14 @@
+<template name="3c52e9f2">
+  <view class="_div data-v-127dcbf9 tabbar-wrap {{isIphoneX ? 'isIphoneX' : ''}}">
+    <view class="_ul data-v-127dcbf9 tabbar">
+      <view class="_li data-v-127dcbf9 tabbar-item {{item.isSpecial ? 'wrapSpecial' : ''}}" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'0_'+index}}" data-comkey="{{$k}}" wx:for="{{navList}}" wx:for-index="index" wx:for-item="item">
+        <view class="_p data-v-127dcbf9 tabbar-icon">
+          <image alt="tabbar-icon" src="{{selectNavIndex == index? item.selectedIconPath : item.iconPath}}" class="_img data-v-127dcbf9 {{item.isSpecial ? 'imgSpecial' : ''}}"></image>
+        </view>
+        <view class="_p data-v-127dcbf9 tabbar-text {{selectNavIndex == index ? 'active' : ''}}">
+          {{item.text}}
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

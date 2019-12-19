@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/lesson/main",
+    "pages/courseDetail/main",
+    "pages/teacherDetail/main",
+    "pages/my/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "豹变学院",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom":true,
+    "color": "#999",
+    "backgroundColor": "#fafafa",
+    "selectedColor": "#333",
+    "borderStyle": "white",
+
+    "list": [{
+      "text": "首页",
+      "pagePath": "pages/index/main",
+      "iconPath": "static/tabbar/main.png",
+      "selectedIconPath": "static/tabbar/main_active.png"
+    }, 
+    {
+      "text": "课程",
+      "pagePath": "pages/lesson/main",
+      "iconPath": "static/tabbar/lesson.png",
+      "selectedIconPath": "static/tabbar/lesson_active.png"
+    },
+    {
+      "text": "我的",
+      "pagePath": "pages/my/main",
+      "iconPath": "static/tabbar/my.png",
+      "selectedIconPath": "static/tabbar/my_active.png"
+    }],
+    "position": "bottom"
+  }
+}

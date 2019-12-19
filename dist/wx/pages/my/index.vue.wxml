@@ -1,0 +1,5 @@
+<import src="/components/tabBar.vue.wxml" /><template name="a3909acc">
+  <view class="_div data-v-95b13230 pages_main_entry">
+    <view class="_div data-v-95b13230">我的</view> <template data="{{...$root[$kk+'0'], $root}}" is="3c52e9f2"></template>
+  </view>
+</template>
