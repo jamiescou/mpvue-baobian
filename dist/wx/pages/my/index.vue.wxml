@@ -1,5 +1,73 @@
 <import src="/components/tabBar.vue.wxml" /><template name="a3909acc">
-  <view class="_div data-v-95b13230 pages_main_entry">
-    <view class="_div data-v-95b13230">我的</view> <template data="{{...$root[$kk+'0'], $root}}" is="3c52e9f2"></template>
+  <view class="_div data-v-95b13230 pages_myspace_entry" style=" {{isKeFu ? 'position: fixed' : ''}}">
+    <view class="_div data-v-95b13230 kefu_modal" wx:if="{{isKeFu}}">
+      <view class="_div data-v-95b13230 mask"></view>
+      <view class="_div data-v-95b13230 modal_content">
+        <view class="_div data-v-95b13230 modal_name"> 豹变明星BOSS经纪人 </view>
+        <view class="_div data-v-95b13230 kefu_phone"> 18515918899 </view>
+        <view class="_div data-v-95b13230 phone_btn">
+          <image src="/static/images/cellphone.png" alt class="_img data-v-95b13230"></image> <label class="_span data-v-95b13230 call_text">拨打电话</label>
+        </view>
+        <view class="_div data-v-95b13230 wechat_icon">
+          <image src="/static/images/wechatkefu.png" alt class="_img data-v-95b13230"></image>
+        </view>
+        <view class="_div data-v-95b13230 wechat_name"> 豹妹儿微信 </view>
+      </view>
+      <view class="_div data-v-95b13230 modal_cancel" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+        <image src="/static/images/close.png" alt class="_img data-v-95b13230"></image>
+      </view>
+    </view>
+    <view class="_div data-v-95b13230 myspace_container">
+      <view class="_div data-v-95b13230 myspace_bg">
+        <view class="_div data-v-95b13230 mask"></view>
+        <image src="/static/images/banner.jpg" alt class="_img data-v-95b13230"></image>
+        <view wx:if="{{isLogin}}" class="_div data-v-95b13230 user_info">
+          <view class="_div data-v-95b13230 user_avatar">
+            <image src="{{userInfo.headImg}}" alt class="_img data-v-95b13230"></image>
+          </view>
+          <view class="_div data-v-95b13230 nickname_">
+            {{userInfo.name}}
+          </view>
+          <view class="_div data-v-95b13230 user_desc"> 豹变学员 </view>
+        </view>
+        <view class="_div data-v-95b13230 user_info" wx:if="{{!isLogin}}">
+          <view class="_div data-v-95b13230 default_avatar">
+            <image src="/static/images/baobian_icon.png" alt class="_img data-v-95b13230"></image>
+          </view> <button class="_button data-v-95b13230 user_login" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">登录/注册</button>
+        </view>
+      </view>
+      <view class="_div data-v-95b13230 user_container">
+        <view class="_div data-v-95b13230 common_info">
+          <view class="_div data-v-95b13230 info_item" wx:key="item.text" key="{{item.text}}" bindtap="handleProxy" data-eventid="{{'2_'+index}}" data-comkey="{{$k}}" wx:for="{{myInfoList}}" wx:for-index="index" wx:for-item="item">
+            <view class="_div data-v-95b13230 info_icon">
+              <image src="{{item.icon}}" alt class="_img data-v-95b13230"></image>
+            </view>
+            <view class="_div data-v-95b13230 info_text">
+              {{item.text}}
+            </view>
+            <view class="_div data-v-95b13230 info_nextBtn">
+              <image src="/static/images/next.png" alt class="_img data-v-95b13230"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="_div data-v-95b13230 my_tools">
+        <view class="_div data-v-95b13230 label_title"> 我的工具 </view>
+        <view class="_div data-v-95b13230 info_item" wx:key="item.text" key="{{item.text}}" wx:for="{{myTools}}" wx:for-index="index" wx:for-item="item">
+          <view class="_div data-v-95b13230 info_icon">
+            <image src="{{item.icon}}" alt class="_img data-v-95b13230"></image>
+          </view>
+          <view class="_div data-v-95b13230 info_text">
+            {{item.text}}
+          </view>
+          <view class="_div data-v-95b13230 info_nextBtn">
+            <image src="/static/images/next.png" alt class="_img data-v-95b13230"></image>
+          </view>
+        </view>
+      </view>
+      <view class="_div data-v-95b13230 kefu_fixed" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}">
+        <image src="/static/images/kefu.png" alt class="_img data-v-95b13230"></image>
+      </view>
+    </view> <template data="{{...$root[$kk+'0'], $root}}" is="3c52e9f2"></template>
   </view>
 </template>

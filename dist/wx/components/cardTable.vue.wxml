@@ -1,0 +1,44 @@
+<template name="2e42cd65">
+  <view class="_div data-v-05c18f33 pages_card_table">
+    <view class="_div data-v-05c18f33 star_teacher">
+      <view class="_div data-v-05c18f33 star_lesson">
+        <view class="_div data-v-05c18f33">
+          <image src="/static/images/baobian_icon.png" alt class="_img data-v-05c18f33"></image>
+        </view>
+        <view class="_div data-v-05c18f33 _collage">豹变学院</view>
+        <view class="_div data-v-05c18f33 order_status">
+          {{statusMap[courseInfo.status]}}
+        </view>
+      </view>
+      <view class="_div data-v-05c18f33 teacher_list">
+        <view class="_div data-v-05c18f33 left_avatar">
+          <image src="{{courseInfo.imgsList[0]}}" alt class="_img data-v-05c18f33"></image>
+        </view>
+        <view class="_div data-v-05c18f33 right_content">
+          <view class="_div data-v-05c18f33 class_title">
+            {{courseInfo.courseTitle}}
+          </view>
+          <view class="_div data-v-05c18f33 teacher_name_and_title"><label class="_span data-v-05c18f33 _name">{{courseInfo.courseAuthor}}</label>  <label class="_span data-v-05c18f33 _title">{{courseInfo.courseIntroduce}}</label></view>
+          <view class="_div data-v-05c18f33 tag_list"><label wx:key="tag+el" key="{{tag+el}}" class="_span data-v-05c18f33 _tags" wx:for="{{courseInfo.tagList}}" wx:for-index="el" wx:for-item="tag">{{tag}}</label></view>
+        </view>
+        <view class="_div data-v-05c18f33 last_right">
+          <view class="_div data-v-05c18f33 _price"> ￥{{courseInfo.coursePrice}}
+          </view>
+          <view class="_div data-v-05c18f33 _number"> x {{courseInfo.num}}
+          </view>
+        </view>
+      </view>
+      <view class="_div data-v-05c18f33 card_bottom" wx:if="{{courseInfo.status == 3 && !courseInfo.isComment}}">
+        <view class="_div data-v-05c18f33 _comment" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">评价</view>
+        <view class="_div data-v-05c18f33 finish_discount">合计: ￥{{courseInfo.money}}</view>
+      </view>
+      <view class="_div data-v-05c18f33 card_bottom" wx:else>
+        <view class="_div data-v-05c18f33 finish_discount">合计: ￥{{courseInfo.money}}</view>
+        <view class="_div data-v-05c18f33 has_pay_money"> 已付{{courseInfo.haspayMoney}}
+        </view>
+        <view class="_div data-v-05c18f33 wait_pay" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}"> 待支付{{courseInfo.surplusMoney}}
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

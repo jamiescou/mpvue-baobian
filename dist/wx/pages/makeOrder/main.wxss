@@ -1,0 +1,152 @@
+@import "../../common/vendor.wxss";
+
+.pages_make_order.data-v-25b38cda {
+  background: #F1F1F1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.dicount_make_order.data-v-25b38cda {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  height: 120rpx;
+  justify-content: flex-end;
+  background: rgba(255,255,255,1);
+}
+.dicount_make_order ._discount.data-v-25b38cda {
+  font-size: 30rpx;
+  font-weight: 400;
+  color: rgba(102,102,102,1);
+  line-height: 120rpx;
+}
+.dicount_make_order ._discount ._span.data-v-25b38cda {
+  line-height: 120rpx;
+  font-size: 30rpx;
+  font-weight: 400;
+  color: rgba(51,51,51,1);
+  background: linear-gradient(0deg,rgba(172,129,72,1) 0%, rgba(249,219,167,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.dicount_make_order .order_submit.data-v-25b38cda {
+  margin: 27rpx 22rpx 0 24rpx;
+  line-height: 66rpx;
+  padding: 4rpx 10rpx;
+  height: 66rpx;
+  background: rgba(211,51,41,1);
+  border-radius: 16rpx;
+  font-size: 34rpx;
+  font-weight: 400;
+  color: rgba(255,255,255,1);
+}
+.star_teacher.data-v-25b38cda {
+  padding-left: 3%;
+  height: 402rpx;
+  background: rgba(255,255,255,1);
+  border-top: 2rpx solid #F1F1F1;
+  border-bottom: 2rpx solid #F1F1F1;
+}
+.star_teacher .star_lesson.data-v-25b38cda {
+  display: flex;
+  margin-top: 21rpx;
+}
+.star_teacher .star_lesson ._img.data-v-25b38cda {
+  width: 56rpx;
+  height: 56rpx;
+}
+.star_teacher .star_lesson ._collage.data-v-25b38cda {
+  font-size: 34rpx;
+  font-weight: 400;
+  color: rgba(51,51,51,1);
+}
+.star_teacher .big_title.data-v-25b38cda {
+  height: 55rpx;
+  font-size: 40rpx;
+  font-weight: 500;
+  color: rgba(51,51,51,1);
+  line-height: 36rpx;
+}
+.star_teacher .teacher_list.data-v-25b38cda {
+  display: flex;
+  margin-top: 20rpx;
+}
+.teacher_list .right_content.data-v-25b38cda {
+  padding: 0 3%;
+  width: 100%;
+}
+.star_teacher .left_avatar ._img.data-v-25b38cda {
+  width: 168rpx;
+  height: 250rpx;
+  border-radius: 20rpx;
+}
+.star_teacher .right_content .class_title.data-v-25b38cda {
+  padding-top: 8rpx;
+  height: 31rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: rgba(51,51,51,1);
+  line-height: 36rpx;
+}
+.star_teacher .teacher_name_and_title.data-v-25b38cda {
+  padding-top: 12rpx;
+}
+.star_teacher .teacher_name_and_title ._name.data-v-25b38cda {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: rgba(51,51,51,1);
+  line-height: 36rpx;
+}
+.star_teacher .teacher_name_and_title ._title.data-v-25b38cda {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: rgba(102,102,102,1);
+  line-height: 36rpx;
+}
+.star_teacher .tag_list.data-v-25b38cda {
+  margin-top: 22rpx;
+}
+.star_teacher .tag_list ._tags.data-v-25b38cda {
+  margin-right: 26rpx;
+  padding: 4rpx 10rpx;
+  text-align: center;
+  display: inline-block;
+  height: 40rpx;
+  background: rgba(237,208,121,1);
+  opacity: 0.2;
+  border-radius: 6rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+  color: #000;
+  line-height: 40rpx;
+}
+.price_number.data-v-25b38cda {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18rpx;
+  align-items: flex-end;
+}
+.price_number ._price.data-v-25b38cda {
+  font-size: 26rpx;
+  font-weight: 400;
+  color: rgba(210,74,69,1);
+}
+.price_number .goods_number.data-v-25b38cda {
+  display: flex;
+  margin-left: 42%;
+}
+.price_number .goods_number ._input.data-v-25b38cda {
+  text-align: center;
+  width: 54rpx;
+  height: 54rpx;
+  margin: 0 4rpx;
+  background: #F1F1F1;
+}
+.price_number .goods_number ._span.data-v-25b38cda {
+  padding: 0 22rpx 10rpx 18rpx;
+  background: rgba(242,242,242,1);
+  border-radius: 0 4rpx 4rpx 0;
+}

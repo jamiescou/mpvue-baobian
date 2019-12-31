@@ -1,59 +1,66 @@
-<template name="122f550c">
-  <view class="_div data-v-eb14ff70 pages_course_detail">
+<import src="/components/shareModal.vue.wxml" /><template name="122f550c">
+  <view class="_div data-v-eb14ff70 pages_course_detail"><template bindmodalStatus="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="1e795057"></template>
     <view class="_div data-v-eb14ff70 course_container">
       <view class="_div data-v-eb14ff70 course_detail">
-        <view class="_div data-v-eb14ff70 course_share" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+        <view class="_div data-v-eb14ff70 ispraise_img">
+          <image wx:if="{{!courseInfo.isPraise}}" src="/static/images/fabulous.png" bindtap="handleProxy" alt data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_img data-v-eb14ff70"></image>
+          <image wx:if="{{courseInfo.isPraise}}" src="/static/images/fabulous_active.png" alt class="_img data-v-eb14ff70"></image>
+        </view>
+        <view class="_div data-v-eb14ff70 course_share" catchtouchstart="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}">
           <image src="/static/images/share.png" alt="暂无图片" class="_img data-v-eb14ff70"></image>
         </view>
         <view class="_div data-v-eb14ff70 course_poster">
-          <image src="{{courseInfo.img}}" alt="暂无图片" class="_img data-v-eb14ff70"></image>
+          <image src="{{courseInfo.imgsList&&courseInfo.imgsList[0]}}" alt="暂无图片" class="_img data-v-eb14ff70"></image>
         </view>
         <view class="_div data-v-eb14ff70 describe_container">
-          <view class="_div data-v-eb14ff70 count_down"><label wx:if="{{countdown.day}}" class="_span data-v-eb14ff70 count_day">{{countdown.day}}</label>{{countdown.day>0?':':''}}
+          <view class="_div data-v-eb14ff70 count_down" wx:if="{{hasCountdown}}"><label wx:if="{{countdown.day}}" class="_span data-v-eb14ff70 count_day">{{countdown.day}}</label>{{countdown.day>0?':':''}}
             <label class="_span data-v-eb14ff70 count_hour">{{countdown.hour}}</label>: <label class="_span data-v-eb14ff70 count_minute">{{countdown.minute}}</label>: <label class="_span data-v-eb14ff70 count_seconds">{{countdown.seconds}}</label></view>
           <view class="_div data-v-eb14ff70 course_price">
             <view class="_div data-v-eb14ff70 _price_label">特惠价</view>
-            <view class="_div data-v-eb14ff70 _price_now">￥{{courseInfo.price}}.00</view>
-            <view class="_div data-v-eb14ff70 _price_old">￥{{courseInfo.oldprice}}.00</view>
+            <view class="_div data-v-eb14ff70 _price_now">￥{{courseInfo.price}}</view>
+            <view class="_div data-v-eb14ff70 _price_old">￥{{courseInfo.marketPrice}}</view>
           </view>
           <view class="_p data-v-eb14ff70 course_label">
-            {{courseInfo.label}}
+            {{courseInfo.title}}
           </view>
-          <view class="_div data-v-eb14ff70 course_name_title"><label class="_span data-v-eb14ff70 _name">{{courseInfo.name}}</label>  <label class="_span data-v-eb14ff70 _title">{{courseInfo.title}}</label></view>
+          <view class="_div data-v-eb14ff70 course_name_title"><label class="_span data-v-eb14ff70 _name">{{courseInfo.author}}</label>  <label class="_span data-v-eb14ff70 _title">{{courseInfo.introduce}}</label></view>
           <view class="_div data-v-eb14ff70 course_desc">
-            {{courseInfo.desc}}
+            {{courseInfo.courseDescribe}}
           </view>
         </view>
       </view>
       <view class="_div data-v-eb14ff70 lesson_describe">
         <view class="_div data-v-eb14ff70 content_tab">
-          <view class="_div data-v-eb14ff70 _tabs {{tab.active ? 'active' : ''}}" wx:key="tab.tabId" key="{{tab.tabId}}" bindtap="handleProxy" data-eventid="{{'1_'+index}}" data-comkey="{{$k}}" wx:for="{{tabs}}" wx:for-index="index" wx:for-item="tab">
+          <view class="_div data-v-eb14ff70 _tabs {{tab.active ? 'active' : ''}}" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'3_'+index}}" data-comkey="{{$k}}" wx:for="{{tabs}}" wx:for-index="index" wx:for-item="tab">
             {{tab.label}}
           </view>
         </view>
         <view wx:if="{{tab === 1}}" class="_div data-v-eb14ff70 content_describe">
-          <rich-text nodes="{{courseInfo.htmlForContent}}" class="_div data-v-eb14ff70"></rich-text>
+          <rich-text nodes="{{courseInfo.guideContent}}" class="_div data-v-eb14ff70"></rich-text>
         </view>
         <view wx:if="{{tab === 2}}" class="_div data-v-eb14ff70 content_describe">
-          <rich-text nodes="{{courseInfo.htmlForLesson}}" class="_div data-v-eb14ff70"></rich-text>
+          <rich-text nodes="{{courseInfo.courseContent}}" class="_div data-v-eb14ff70"></rich-text>
         </view>
         <view class="_div data-v-eb14ff70 course_commet">
           <view class="_div data-v-eb14ff70 _commet_title"><label class="_span data-v-eb14ff70 commet_line"> 学员评论 </label></view>
-          <view class="_div data-v-eb14ff70 commet_list" wx:key="comment.id" key="{{comment.id}}" wx:for="{{comments}}" wx:for-index="index" wx:for-item="comment">
+          <view class="_div data-v-eb14ff70 commet_list" wx:key="index" key="{{index}}" wx:for="{{comments}}" wx:for-index="index" wx:for-item="comment">
             <view class="_div data-v-eb14ff70 commet_head">
               <view class="_div data-v-eb14ff70 _avatar">
-                <image src="{{comment.img}}" alt class="_img data-v-eb14ff70"></image>
+                <image src="{{comment.userImg}}" alt class="_img data-v-eb14ff70"></image>
               </view>
               <view class="_div data-v-eb14ff70 _nickname">
-                {{comment.nickname}}
+                {{comment.userName}}
               </view>
               <view class="_div data-v-eb14ff70 fabulous_img">
-                <image wx:if="{{!comment.isFabulous}}" src="/static/images/fabulous.png" bindtap="handleProxy" alt data-eventid="{{'2_'+index}}" data-comkey="{{$k}}" class="_img data-v-eb14ff70"></image>
-                <image wx:if="{{comment.isFabulous}}" src="/static/images/fabulous_active.png" bindtap="handleProxy" alt data-eventid="{{'3_'+index}}" data-comkey="{{$k}}" class="_img data-v-eb14ff70"></image>
+                <image wx:if="{{!comment.isPraise}}" src="/static/images/fabulous.png" bindtap="handleProxy" alt data-eventid="{{'4_'+index}}" data-comkey="{{$k}}" class="_img data-v-eb14ff70"></image>
+                <image wx:if="{{comment.isPraise}}" src="/static/images/fabulous_active.png" alt class="_img data-v-eb14ff70"></image>
               </view>
             </view>
             <view class="_div data-v-eb14ff70 commet_desc">
               {{comment.comment}}
+              <view class="_div data-v-eb14ff70 commet_piclist">
+                <image src="{{comment.pic}}" alt class="_img data-v-eb14ff70"></image>
+              </view>
             </view>
           </view>
         </view>
@@ -61,7 +68,7 @@
     </view>
     <view class="_div data-v-eb14ff70 footer_button">
       <view class="_div data-v-eb14ff70 course_recommend"> 我要推荐 </view>
-      <view class="_div data-v-eb14ff70 just_purchase"> 立即购买 </view>
+      <view class="_div data-v-eb14ff70 just_purchase" bindtap="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}"> 立即购买 </view>
     </view>
   </view>
 </template>

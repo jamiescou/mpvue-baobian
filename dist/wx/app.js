@@ -1,27 +1,37 @@
 require("./common/manifest.js")
 require("./common/vendor.js")
-global.webpackJsonpMpvue([6],{
+global.webpackJsonpMpvue([17],{
 
-/***/ 27:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 50:
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_defineProperty__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_defineProperty__);
 
 
-var Vue = __webpack_require__(3);
-var Vuex = __webpack_require__(87);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _promise = __webpack_require__(20);
+
+var _promise2 = _interopRequireDefault(_promise);
+
+var _defineProperty2 = __webpack_require__(67);
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Vue = __webpack_require__(1);
+var Vuex = __webpack_require__(105);
 
 Vue.use(Vuex);
 
-/* harmony default export */ __webpack_exports__["a"] = (new Vuex.Store({
+exports.default = new Vuex.Store({
     state: {
         systemInfo: null
     },
-    mutations: __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_defineProperty___default()({}, 'GET_SYSTEMINFO_SUCCESS', function GET_SYSTEMINFO_SUCCESS(state, systemInfo) {
+    mutations: (0, _defineProperty3.default)({}, 'GET_SYSTEMINFO_SUCCESS', function GET_SYSTEMINFO_SUCCESS(state, systemInfo) {
         state.systemInfo = systemInfo;
     }),
     actions: {
@@ -29,7 +39,7 @@ Vue.use(Vuex);
             var commit = _ref.commit,
                 state = _ref.state;
 
-            return new __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
+            return new _promise2.default(function (resolve, reject) {
                 console.log(state);
                 if (state.systemInfo) {
                     resolve(state.systemInfo);
@@ -52,43 +62,57 @@ Vue.use(Vuex);
             return state.systemInfo ? state.systemInfo.model.includes("iPhone X") : false;
         }
     }
-}));
+});
 
 /***/ }),
 
-/***/ 47:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 75:
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_index__ = __webpack_require__(27);
 
 
+var _vue = __webpack_require__(1);
 
+var _vue2 = _interopRequireDefault(_vue);
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.config.productionTip = false;
-__WEBPACK_IMPORTED_MODULE_1__App__["a" /* default */].mpType = 'app';
+var _App = __webpack_require__(76);
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$store = __WEBPACK_IMPORTED_MODULE_2__store_index__["a" /* default */];
-var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__App__["a" /* default */]);
+var _App2 = _interopRequireDefault(_App);
+
+var _index = __webpack_require__(50);
+
+var _index2 = _interopRequireDefault(_index);
+
+var _request = __webpack_require__(68);
+
+var _request2 = _interopRequireDefault(_request);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.prototype.request = _request2.default;
+_vue2.default.config.productionTip = false;
+_App2.default.mpType = 'app';
+
+_vue2.default.prototype.$store = _index2.default;
+var app = new _vue2.default(_App2.default);
 app.$mount();
 
 /***/ }),
 
-/***/ 48:
+/***/ 76:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(50);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_script_index_0_App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_script_index_0_App_vue__);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(49)
+  __webpack_require__(77)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 
 /* template */
@@ -100,7 +124,7 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_script_index_0_App_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_script_index_0_App_vue___default.a,
   __vue_template__,
   __vue_styles__,
   __vue_scopeId__,
@@ -125,26 +149,35 @@ if (false) {(function () {
   })
 })()}
 
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
 
 
 /***/ }),
 
-/***/ 49:
+/***/ 77:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 50:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 78:
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store__ = __webpack_require__(27);
 
 
-/* harmony default export */ __webpack_exports__["a"] = ({
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _store = __webpack_require__(50);
+
+var _store2 = _interopRequireDefault(_store);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
   created: function created() {
     // 调用API从本地缓存中获取数据
     /*
@@ -173,14 +206,14 @@ if (false) {(function () {
     wx.hideTabBar();
     // 获取系统信息，适配iphoneX
 
-    console.log(__WEBPACK_IMPORTED_MODULE_0__store__["a" /* default */]);
-    __WEBPACK_IMPORTED_MODULE_0__store__["a" /* default */].dispatch('getSystemInfo');
+    console.log(_store2.default);
+    _store2.default.dispatch('getSystemInfo');
   },
   log: function log() {
     console.log('log at:' + Date.now());
   }
-});
+};
 
 /***/ })
 
-},[47]);
+},[75]);

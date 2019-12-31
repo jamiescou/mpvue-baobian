@@ -1,0 +1,24 @@
+<template name="1e795057">
+  <view class="_div data-v-36d2c849 pages_share_modal">
+    <view class="_div data-v-36d2c849 share_modal" wx:if="{{isShowModal}}">
+      <view class="_div data-v-36d2c849 masker"></view>
+      <view class="_div data-v-36d2c849 modal_container">
+        <view class="_div data-v-36d2c849 share_content">
+          <view catchtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_div data-v-36d2c849"><button open-type="share" class="_button data-v-36d2c849 option_btn share_item">
+              <view class="_div data-v-36d2c849 share_icon">
+                <image src="/static/images/share_wechat.png" alt class="_img data-v-36d2c849"></image>
+              </view>
+              <view class="_div data-v-36d2c849 share_title"> 发送好友 </view>
+            </button></view>
+          <view class="_div data-v-36d2c849 share_item">
+            <view class="_div data-v-36d2c849 share_icon" catchtouchstart="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+              <image src="/static/images/share_poster.png" alt class="_img data-v-36d2c849"></image>
+            </view>
+            <view class="_div data-v-36d2c849 share_title"> 生成海报 </view>
+          </view>
+        </view>
+        <view class="_div data-v-36d2c849 share_cancel" catchtouchstart="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}"> 取消 </view>
+      </view>
+    </view>
+  </view>
+</template>

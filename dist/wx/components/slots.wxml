@@ -1,1 +1,9 @@
+<import src="/components/upload.vue.wxml" />
+<import src="/components/shareModal.vue.wxml" />
 <import src="/components/tabBar.vue.wxml" />
+<import src="/components/upload.vue.wxml" />
+<import src="/components/editTable.vue.wxml" />
+<import src="/components/tabBar.vue.wxml" />
+<import src="/components/editTable.vue.wxml" />
+<import src="/components/cardTable.vue.wxml" />
+<import src="/components/shareModal.vue.wxml" />

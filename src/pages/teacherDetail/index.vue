@@ -1,109 +1,55 @@
 <template>
   <div class="pages_teacher_detail">
+    <shareModal :isShowModal="isShowModal" @modalStatus="modalStatus"></shareModal>
     <div class="course_container">
       <!-- 课程标题价格等 -->
       <div class="course_detail">
-        <div class="course_share" @click="shareBtn(courseInfo.id)">
+        <div class="course_share" @click="shareBtn">
           <img src="/static/images/share.png" alt="暂无图片">
         </div>
-        <div class="course_poster">
-          <img :src="courseInfo.img" alt="暂无图片">
+        <div v-if="courseInfo.urlType===1" class="course_poster">
+          <img :src="courseInfo.url" alt="暂无图片">
+        </div>
+        <div v-if="courseInfo.urlType===2" class="course_poster">
+          <!-- <video :src="courseInfo.url"></video> -->
+          <video
+            style="width: 100%"
+            id="myVideo"
+            @click="playCourse"
+            show-play-btn
+            :src="courseInfo.url"
+            controls
+          ></video>
+        </div>
+        <div v-if="courseInfo.urlType===2 && !playFlag" class="course_play" @click="playCourse">
+          <img src="/static/images/play.png" alt="暂无图片">
         </div>
       </div>
-      <div class="lesson_describe">
+      <div class="lesson_describe" v-html="courseInfo.content">
         <!-- 详细介绍部分 -->
-        <div class="content_tab">
-          <div class="_tabs" :class="tab.active?'active':''" v-for="(tab, index) in tabs" :key="tab.tabId" @click="changeTab(tab, index)">
-            {{tab.label}}
-          </div>
-        </div>
-        <div v-if="tab === 1" class="content_describe">
-          <div v-html='courseInfo.htmlForContent'></div>
-        </div>
-        <div v-if="tab === 2" class="content_describe">
-          <div v-html='courseInfo.htmlForLesson'></div>
-        </div>
-        <div class="course_commet">
-          <!-- 评论 -->
-          <div class="_commet_title">
-            <span class="commet_line">
-              学员评论
-            </span>
-          </div>
-          <div class="commet_list" v-for="comment in comments" :key="comment.id">
-            <div class="commet_head">
-              <div class="_avatar">
-                <img :src="comment.img" alt="">
-              </div>
-              <div class="_nickname">
-                {{comment.nickname}}
-              </div>
-              <div class="fabulous_img">
-                <img v-if="!comment.isFabulous" src="/static/images/fabulous.png" @click="fabulousComment(comment)" alt="">
-                <img v-if="comment.isFabulous" src="/static/images/fabulous_active.png" @click="fabulousComment(comment)" alt="">
-              </div>
-            </div>
-            <div class="commet_desc">
-              {{comment.comment}}
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <div class="footer_button">
-      <div class="course_recommend">
-        我要推荐
-      </div>
-      <div class="just_purchase">
-        立即购买
-      </div>
+      你的IP 我来成就
     </div>
   </div>
 </template>
 
 <script>
 import Countdown from '../../utils/countdown.js'
+import shareModal from '@/components/shareModal'
 export default {
+  components: {
+    shareModal
+  },
   data () {
     return {
+      isShowModal: false,
       countdown: {},
-      courseInfo: {
-        label: '个人品牌，重构商业竞争力超级...',
-        name: '张大豆',
-        img: '/static/images/course.png',
-        id: 1,
-        title: '豹变学院院长、豹变IP创始人',
-        price: 1999,
-        oldprice: 2999,
-        desc: '个人品牌重构商业竞争力，这是个不错的课程............................',
-        htmlForContent: `<div>
-                    <div>创始人品牌命门之认知重生</div>
-                    <div>创始人品牌命门之认知重生</div>
-                    <div><img height='200' src='http://storage.zone.photo.sina.com.cn/zone/1000_0/20191217/d86c2df6fbf2b8d07c33fe508595050d_3024_3024.jpg?&ssig=60doVKd%2F%2FV&KID=sina,slidenews&Expires=1576556973'/></div>
-                  </div>`,
-        htmlForLesson: `<div>
-                    <div>这里是课程内容</div>
-                    <div>这里是课程内容</div>
-                    <div><img height='200' src='http://storage.zone.photo.sina.com.cn/zone/1000_0/20191217/d86c2df6fbf2b8d07c33fe508595050d_3024_3024.jpg?&ssig=60doVKd%2F%2FV&KID=sina,slidenews&Expires=1576556973'/></div>
-                  </div>`
-      },
-      comments: [
-        {
-          img: '/static/images/avatar.png',
-          id: 1,
-          nickname: '艾克斯',
-          comment: '创始人品牌命门之认知重生创始人品牌命门之认知重生创始人品牌命门之认知重生创始人品牌命门之认知重生创始人品牌命门之认知重生创始人品牌命门之认知重生',
-          isFabulous: true
-        },
-        {
-          img: '/static/images/avatar.png',
-          id: 2,
-          nickname: '埃克斯',
-          comment: '这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容',
-          isFabulous: true
-        }
-      ],
-
+      videoContext: null,
+      playFlag: false,
+      courseInfo: {},
+      comments: [],
       tab: 1,
       tabs: [
         {label: '课程导览', tabId: 1, active: true},
@@ -111,9 +57,23 @@ export default {
       ]
     }
   },
-  components: {
+  onReady: function (res) {
+    // this.videoContext = wx.createVideoContext('myVideo')
+  },
+  onLoad(){
+    Object.assign(this.$data, this.$options.data())
+  },
+  mounted() {
+    this.videoContext = wx.createVideoContext('myVideo')
   },
   methods: {
+    getDetailInfo(){
+      let id = this.$root.$mp.query.id
+      let url = '/api/teacher/getTeacherDetail?id='+id
+      this.request.post(url).then(res => {
+        this.courseInfo = res.data
+      })
+    },
     changeTab(tab){
       this.tabs.map(item => {
         item.active = item.tabId === tab.tabId ? true : false
@@ -122,100 +82,142 @@ export default {
     },
     fabulousComment(state){
       state.isFabulous = !state.isFabulous
+    },
+    shareBtn(){
+      this.isShowModal = true
+    },
+    playCourse(res){
+      this.playFlag = !this.playFlag
+      if (!this.playFlag) {
+        this.videoContext.pause()
+      } else {
+        this.videoContext.play()
+      }
+    },
+    pauseCourse(){
+      this.videoContext.pause()
+    },
+    shareFriends(){
+
+    },
+    sharePoster(){
+
+    },
+    modalStatus(val){
+      this.isShowModal = val
     }
+    
   },
   created () {
-     this.courseInfo.htmlForContent = this.courseInfo.htmlForContent.replace(/\<img/gi, '<img style="max-width:100%;height:auto" ');
-     this.courseInfo.htmlForLesson = this.courseInfo.htmlForLesson.replace(/\<img/gi, '<img style="max-width:100%;height:auto" ');
-     Countdown.init('2020-01-03 09:00:00','countdown', this)
   },
-  onLoad(){
-    //  Countdown.init('2020-01-03 09:00:00','countdown', this)
-    //  console.log(this.countdown)
+  onShareAppMessage(ops) {
+    let url = getCurrentPageUrl()
+    console.log('url===??', url)
+    this.isShowModal = false
+    if (ops.from === "button") {
+      // 来自页面内转发按钮
+      console.log(ops.target);
+    }
+    return {
+      title: "转发的demo",//这里是定义转发的标题
+      path: `../productDetail/main`,//这里是定义转发的地址
+      success: function(res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+        var shareTickets = res.shareTickets;
+        // if (shareTickets.length == 0) {
+        //   return false;
+        // }
+        // //可以获取群组信息
+        // wx.getShareInfo({
+        //   shareTicket: shareTickets[0],
+        //   success: function (res) {
+        //     console.log(res)
+        //   }
+        // })
+      },
+      fail: function(res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    };
+  },
+  onShow(){
+    this.getDetailInfo()
   }
 }
 </script>
 <style lang="stylus" scoped>
   .pages_teacher_detail
     width 100%
+    position relative
+    .share_modal
+      position relative
+      .masker
+        width 100%
+        height 100%
+        position fixed
+        background:rgba(0,0,0,1);
+        opacity:0.5;
+        z-index: 1001
+      .modal_container
+        bottom 0
+        position fixed
+        width 100%
+        height 350rpx
+        background #ffffff
+        z-index 10000
+        .share_content
+          display flex
+          align-items center
+          padding 45rpx 0
+          border-bottom 2px solid rgba(241,241,241,1);
+          justify-content space-evenly
+          button
+            display inline
+            position static !important
+            margin 0 !important
+            padding 0 !important
+            line-height  0 !important
+            background-color: #fff!important
+          .option_btn
+            .share_title
+              margin-top 10px
+          .share_item
+            .share_icon
+              img
+                width 110px
+                height 110px
+            .share_title
+              font-size:28rpx;
+              font-weight:400;
+              color:rgba(51,51,51,1);
+              line-height:36rpx;
+        .share_cancel
+          text-align center;
+          font-size:28rpx;
+          font-weight:400;
+          color:rgba(51,51,51,1);
+          line-height: 80px;
+          height: 52rpx;
     .footer_button
-      display flex
       position fixed
       bottom 0
       left 0
-      height 80rpx
       width 100%
       z-index 1000
       height:80rpx;
+      font-size:32rpx;
+      font-weight:400;
+      color:rgba(255,255,255,1);
       line-height 80rpx;
       text-align center;
-      border:1rpx solid rgba(241,241,241,1);
-      font-size:34rpx;
-      font-weight:400;
-      color:rgba(254,254,254,1);
       background:linear-gradient(0deg,rgba(172,129,72,1),rgba(249,219,167,1));
     .course_container
       padding-bottom 80rpx
       .lesson_describe
         width 100%
-        .course_commet
-          margin 50rpx 0 20rpx 20rpx
-          ._commet_title
-            margin-bottom 42rpx
-            .commet_line
-              padding-bottom 10rpx
-              border-bottom 6rpx solid #F9DBA7;
-              font-size:28rpx;
-              font-weight:400;
-              color:rgba(51,51,51,1);
-              line-height:40rpx;
-          .commet_list
-            padding 35rpx 0
-            border-bottom 1px solid rgba(246,246,246,1);
-            .commet_head
-              display flex
-              align-items center
-              position relative
-              ._nickname
-                margin 0 10rpx
-                font-size:24rpx;
-                font-weight:400;
-                color:rgba(102,102,102,1);
-                line-height:36rpx;
-              .fabulous_img
-                position absolute
-                right 52rpx
-                top 10rpx
-                img
-                  width:27rpx;
-                  height:28rpx;
-                  vertical-align middle
-              ._avatar
-                img
-                  width 60rpx
-                  height 60rpx
-            .commet_desc
-              margin-right 53rpx
-              font-size:26rpx;
-              font-weight:400;
-              color:rgba(51,51,51,1);
-              line-height:34rpx;
-        .content_tab
-          display flex
-          justify-content space-between
-          ._tabs
-            flex 1
-            height:80rpx;
-            text-align center
-            background:rgba(255,255,255,1);
-            border:1rpx solid rgba(241,241,241,1);
-            font-size:34rpx;
-            font-weight:400;
-            color:rgba(51,51,51,1);
-            line-height:80rpx;
-            &.active
-              color:rgba(255,255,255,1);
-              background:linear-gradient(0deg,rgba(172,129,72,1),rgba(249,219,167,1));
+        margin 0 20rpx
       .course_detail
         background:rgba(255,255,255,1);
         position relative
@@ -230,77 +232,16 @@ export default {
         .course_poster
           img
             width 100%
+        .course_play
+          position absolute
+          left 3%
+          bottom 3%
+          z-index 100
+          img 
+            width 131px
+            height 38px
         .describe_container
           padding 27rpx 0 24rpx 30rpx
           position relative
-          .count_down
-            display flex
-            justify-content center
-            padding 0 20rpx
-            height: 50px;
-            opacity: 0.9;
-            position absolute
-            bottom 100rpx
-            right 20rpx
-            font-size: 30rpx;
-            font-weight: 400;
-            color: rgba(102,102,102,1);
-            line-height: 50rpx;
-            background: rgba(51,51,51,1);
-            .count_day,
-            .count_hour,
-            .count_minute,
-            .count_seconds
-              margin 0 6rpx
-              background:linear-gradient(0deg,rgba(172,129,72,1) 0%, rgba(249,219,167,1) 100%);
-              -webkit-background-clip:text;
-              -webkit-text-fill-color:transparent;
-          .course_label
-            font-size 30rpx
-            font-weight 500
-            color rgba(51,51,51,1)
-            line-height 36rpx
-          .course_name_title
-            margin 4rpx 0 20rpx 0
-            ._name
-              font-size 24rpx
-              font-weight 400
-              color rgba(51,51,51,1)
-              line-height 36rpx
-            ._title
-              font-size 24rpx
-              font-weight 400
-              color rgba(102,102,102,1)
-              line-height 36rpx
-          .course_desc
-            font-size:26rpx;
-            font-weight:400;
-            color:rgba(102,102,102,1);
-            line-height:36rpx;
-          .course_price
-            display flex
-            align-items center
-            margin -8rpx 0 28rpx 0
-            ._price_label
-              background:linear-gradient(0deg,rgba(172,129,72,1),rgba(249,219,167,1));
-              border-radius 20rpx
-              width 115px
-              height 48px
-              line-height 48px
-              text-align center
-              font-size 28rpx
-              font-weight 400
-              color rgba(255,255,255,1)
-            ._price_now
-              font-size:30px;
-              font-weight:400;
-              color:rgba(210,13,13,1);
-              line-height:36px;
-              margin 0 9rpx 0 12rpx
-            ._price_old
-              font-size:24px;
-              font-weight:400;
-              text-decoration:line-through;
-              color:rgba(102,102,102,1);
-              line-height:36px;
+          
 </style>

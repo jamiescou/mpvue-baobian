@@ -1,0 +1,94 @@
+@import "../../common/vendor.wxss";
+
+.pages_comment.data-v-76bec38e {
+  background: #fff;
+  position: absolute;
+  margin: 30rpx 2% 0rpx 2%;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.pages_comment .commet_publish.data-v-76bec38e {
+  text-align: center;
+  position: absolute;
+  bottom: 36rpx;
+  height: 88rpx;
+  width: 95%;
+  margin-right: 2%;
+  line-height: 88rpx;
+  background: linear-gradient(0deg, #b47f3c, #ffdaa0);
+  font-size: 32rpx;
+  font-weight: 400;
+  color: #fff;
+}
+.pages_comment .comment_container.data-v-76bec38e {
+  margin-top: 60rpx;
+}
+.pages_comment .comment_container ._title.data-v-76bec38e {
+  margin-bottom: 20rpx;
+  height: 32rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  line-height: 32rpx;
+}
+.pages_comment .comment_container .comment_field.data-v-76bec38e {
+  margin-right: 2%;
+  width: 95%;
+  border: 2rpx solid #f7f7f7;
+  border-radius: 10rpx;
+}
+.pages_comment .comment_container .comment_field .textarea_field.data-v-76bec38e {
+  margin: 20rpx;
+}
+.pages_comment .card_lesson.data-v-76bec38e {
+  display: flex;
+}
+.pages_comment .card_lesson .lesson_pic ._img.data-v-76bec38e {
+  width: 144rpx;
+  height: 190rpx;
+}
+.pages_comment .card_lesson .right_content.data-v-76bec38e {
+  padding-left: 3%;
+}
+.pages_comment .card_lesson .right_content .class_title.data-v-76bec38e {
+  padding-top: 8rpx;
+  height: 31rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+  line-height: 36rpx;
+}
+.pages_comment .card_lesson .right_content .teacher_name_and_title.data-v-76bec38e {
+  padding-top: 12rpx;
+}
+.pages_comment .card_lesson .right_content .teacher_name_and_title ._name.data-v-76bec38e {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #333;
+  line-height: 36rpx;
+}
+.pages_comment .card_lesson .right_content .teacher_name_and_title ._title.data-v-76bec38e {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #666;
+  line-height: 36rpx;
+}
+.pages_comment .card_lesson .right_content .tag_list.data-v-76bec38e {
+  margin-top: 22rpx;
+}
+.pages_comment .card_lesson .right_content .tag_list ._tags.data-v-76bec38e {
+  margin-right: 16rpx;
+  padding: 4rpx 10rpx;
+  text-align: center;
+  display: inline-block;
+  height: 40rpx;
+  background: #edd079;
+  opacity: 0.2;
+  border-radius: 6rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+  color: #000;
+  line-height: 40rpx;
+}

@@ -1,0 +1,51 @@
+@import "../../common/vendor.wxss";
+
+.myspace_container .myspace_bg.data-v-68a82754 {
+  position: relative;
+  height: 319rpx;
+}
+.myspace_container .myspace_bg .footer_border.data-v-68a82754 {
+  width: 250%;
+  overflow: hidden;
+  border-bottom: 319rpx solid #f7f7f7;
+  border-radius: 0 0 25% 25%;
+  position: absolute;
+  bottom: 0;
+}
+.myspace_container .myspace_bg .mask.data-v-68a82754 {
+  width: 100%;
+}
+.myspace_container .myspace_bg ._img.data-v-68a82754 {
+  width: 100%;
+  height: 319rpx;
+}
+.myspace_container .myspace_bg .user_info.data-v-68a82754 {
+  position: absolute;
+  top: 51rpx;
+  left: calc(50% - 70rpx);
+  border-radius: 50%;
+}
+.myspace_container .myspace_bg .user_info .user_login.data-v-68a82754 {
+  line-height: 40rpx;
+  padding: 10rpx 16rpx;
+  height: 56rpx;
+  background: #f1f1f1;
+  border-radius: 12rpx;
+}
+.myspace_container .myspace_bg .user_info .user_avatar ._img.data-v-68a82754 {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+}
+.myspace_container .myspace_bg .user_info .nickname_.data-v-68a82754 {
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: 400;
+  color: #fff;
+}
+.myspace_container .myspace_bg .user_info .user_desc.data-v-68a82754 {
+  text-align: center;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #fff;
+}

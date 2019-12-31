@@ -1,0 +1,17 @@
+<template name="3ebd416c">
+  <view wx:if="{{uploadFlag === 'multiple'}}" class="_div data-v-1148a03c j-pic-upload">
+    <view wx:if="{{urls.length < 6}}" class="_div data-v-1148a03c j-upload-btn" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" style=" {{('width:' + (width || '120rpx') + ';' + 'height:' + (height || '120rpx') + ';')}}">
+      <view class="_div data-v-1148a03c j-upload-add">
+        <image src="/static/images/photo_pic.png" alt class="_img data-v-1148a03c"></image>
+      </view>
+      <view class="_div data-v-1148a03c add_pic_title">添加图片</view>
+      <view class="_div data-v-1148a03c more_six">(最多6张)</view>
+    </view>
+    <image bindtap="handleProxy" wx:key="src" key="{{src}}" src="{{src}}" class="_img data-v-1148a03c img" data-eventid="{{'1_'+index}}" data-comkey="{{$k}}" wx:for="{{urls}}" wx:for-index="index" wx:for-item="src" style=" {{('width:' + (width || '120rpx') + ';' + 'height:' + (height || '120rpx') + ';')}}"></image>
+  </view>
+  <view wx:else class="_div data-v-1148a03c j-pic-upload">
+    <view class="_div data-v-1148a03c js-upload-btn" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" style=" {{(  'width:' +  (width || '144rpx') +  ';' +  'height:' +  (height || '144rpx') +  ';' +  'border-radius:' +  (radius || '0') +  ';')}}">
+      <image class="_img data-v-1148a03c upload_avatar" src="{{signlePic}}" alt></image>
+    </view>
+  </view>
+</template>

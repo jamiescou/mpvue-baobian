@@ -1,47 +1,52 @@
 <template>
   <div class="pages_course_detail">
+    <shareModal :isShowModal="isShowModal" @modalStatus="modalStatus"></shareModal>
     <div class="course_container">
       <!-- 课程标题价格等 -->
       <div class="course_detail">
-        <div class="course_share" @click="shareBtn(courseInfo.id)">
+        <div class="ispraise_img">
+          <img v-if="!courseInfo.isPraise" src="/static/images/fabulous.png" @click="praiseComment(courseInfo.id)" alt="">
+          <img v-if="courseInfo.isPraise" src="/static/images/fabulous_active.png" alt="">
+        </div>
+        <div class="course_share" @touchstart.stop="shareBtn(courseInfo.id)">
           <img src="/static/images/share.png" alt="暂无图片">
         </div>
         <div class="course_poster">
-          <img :src="courseInfo.img" alt="暂无图片">
+          <img :src="courseInfo.imgsList&&courseInfo.imgsList[0]" alt="暂无图片">
         </div>
         <div class="describe_container">
-          <div class="count_down">
+          <div class="count_down" v-if="hasCountdown">
             <span v-if="countdown.day" class="count_day">{{countdown.day}}</span>{{countdown.day>0?':':''}}
             <span class="count_hour">{{countdown.hour}}</span>:
             <span class="count_minute">{{countdown.minute}}</span>:
             <span class="count_seconds">{{countdown.seconds}}</span>
           </div>
           <div class="course_price">
-            <div class="_price_label">特惠价</div><div class="_price_now">￥{{courseInfo.price}}.00</div><div class="_price_old">￥{{courseInfo.oldprice}}.00</div>
+            <div class="_price_label">特惠价</div><div class="_price_now">￥{{courseInfo.price}}</div><div class="_price_old">￥{{courseInfo.marketPrice}}</div>
           </div>
           <p class="course_label">
-            {{courseInfo.label}}
+            {{courseInfo.title}}
           </p>
           <div class="course_name_title">
-            <span class="_name">{{courseInfo.name}}</span>&nbsp;&nbsp;<span class="_title">{{courseInfo.title}}</span>
+            <span class="_name">{{courseInfo.author}}</span>&nbsp;&nbsp;<span class="_title">{{courseInfo.introduce}}</span>
           </div>
           <div class="course_desc">
-            {{courseInfo.desc}}
+            {{courseInfo.courseDescribe}}
           </div>
         </div>
       </div>
       <div class="lesson_describe">
         <!-- 详细介绍部分 -->
         <div class="content_tab">
-          <div class="_tabs" :class="tab.active?'active':''" v-for="(tab, index) in tabs" :key="tab.tabId" @click="changeTab(tab, index)">
+          <div class="_tabs" :class="tab.active?'active':''" v-for="(tab, index) in tabs" :key="index" @click="changeTab(tab, index)">
             {{tab.label}}
           </div>
         </div>
         <div v-if="tab === 1" class="content_describe">
-          <div v-html='courseInfo.htmlForContent'></div>
+          <div v-html='courseInfo.guideContent'></div>
         </div>
         <div v-if="tab === 2" class="content_describe">
-          <div v-html='courseInfo.htmlForLesson'></div>
+          <div v-html='courseInfo.courseContent'></div>
         </div>
         <div class="course_commet">
           <!-- 评论 -->
@@ -50,21 +55,22 @@
               学员评论
             </span>
           </div>
-          <div class="commet_list" v-for="comment in comments" :key="comment.id">
+          <div class="commet_list" v-for="(comment, index) in comments" :key="index">
             <div class="commet_head">
               <div class="_avatar">
-                <img :src="comment.img" alt="">
+                <img :src="comment.userImg" alt="">
               </div>
               <div class="_nickname">
-                {{comment.nickname}}
+                {{comment.userName}}
               </div>
               <div class="fabulous_img">
-                <img v-if="!comment.isFabulous" src="/static/images/fabulous.png" @click="fabulousComment(comment)" alt="">
-                <img v-if="comment.isFabulous" src="/static/images/fabulous_active.png" @click="fabulousComment(comment)" alt="">
+                <img v-if="!comment.isPraise" src="/static/images/fabulous.png" @click="fabulousComment(comment)" alt="">
+                <img v-if="comment.isPraise" src="/static/images/fabulous_active.png" alt="">
               </div>
             </div>
             <div class="commet_desc">
               {{comment.comment}}
+              <div class="commet_piclist"><img :src="comment.pic" alt=""></div>
             </div>
           </div>
         </div>
@@ -74,7 +80,7 @@
       <div class="course_recommend">
         我要推荐
       </div>
-      <div class="just_purchase">
+      <div class="just_purchase" @click="justPurchase">
         立即购买
       </div>
     </div>
@@ -83,47 +89,17 @@
 
 <script>
 import Countdown from '../../utils/countdown.js'
+import shareModal from '@/components/shareModal'
+import {formatTime, getCurrentPageUrl} from '@/utils/index'
+const shareUrl = '/pages/courseDetail/main'
 export default {
   data () {
     return {
       countdown: {},
-      courseInfo: {
-        label: '个人品牌，重构商业竞争力超级...',
-        name: '张大豆',
-        img: '/static/images/course.png',
-        id: 1,
-        title: '豹变学院院长、豹变IP创始人',
-        price: 1999,
-        oldprice: 2999,
-        desc: '个人品牌重构商业竞争力，这是个不错的课程............................',
-        htmlForContent: `<div>
-                    <div>创始人品牌命门之认知重生</div>
-                    <div>创始人品牌命门之认知重生</div>
-                    <div><img height='200' src='http://storage.zone.photo.sina.com.cn/zone/1000_0/20191217/d86c2df6fbf2b8d07c33fe508595050d_3024_3024.jpg?&ssig=60doVKd%2F%2FV&KID=sina,slidenews&Expires=1576556973'/></div>
-                  </div>`,
-        htmlForLesson: `<div>
-                    <div>这里是课程内容</div>
-                    <div>这里是课程内容</div>
-                    <div><img height='200' src='http://storage.zone.photo.sina.com.cn/zone/1000_0/20191217/d86c2df6fbf2b8d07c33fe508595050d_3024_3024.jpg?&ssig=60doVKd%2F%2FV&KID=sina,slidenews&Expires=1576556973'/></div>
-                  </div>`
-      },
-      comments: [
-        {
-          img: '/static/images/avatar.png',
-          id: 1,
-          nickname: '艾克斯',
-          comment: '创始人品牌命门之认知重生创始人品牌命门之认知重生创始人品牌命门之认知重生创始人品牌命门之认知重生创始人品牌命门之认知重生创始人品牌命门之认知重生',
-          isFabulous: true
-        },
-        {
-          img: '/static/images/avatar.png',
-          id: 2,
-          nickname: '埃克斯',
-          comment: '这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容',
-          isFabulous: true
-        }
-      ],
-
+      isShowModal: false,
+      hasCountdown: false,
+      courseInfo: {},
+      comments: [],
       tab: 1,
       tabs: [
         {label: '课程导览', tabId: 1, active: true},
@@ -132,26 +108,119 @@ export default {
     }
   },
   components: {
+    shareModal
+  },
+  onShow(){
+    this.getDetailInfo()
   },
   methods: {
+    getDetailInfo(){
+      let id = this.$root.$mp.query.id
+      let url = '/api/course/courseDetail?id='+id
+      this.request.post(url).then(res => {
+        let tempData = res.data
+        tempData['imgsList'] = tempData.imgs.split(',')
+        tempData.guideContent = tempData.guideContent ? tempData.guideContent.replace(/\<\ ?img/gi, '<img style="max-width:100%;height:auto" ') : ''
+        tempData.courseContent = tempData.courseContent ? tempData.courseContent.replace(/\<\ ?img/gi, '<img style="max-width:100%;height:auto" ') : ''
+        this.courseInfo = tempData
+        console.log('tempData===>>>', this.courseInfo.guideContent)
+        this.comments = tempData.commentList
+        let limitedTimeEnd = res.data.limitedTimeEnd
+        console.log('limitedTimeEnd==>>', limitedTimeEnd)
+        if (limitedTimeEnd) {
+          this.hasCountdown = true
+          let formatLimitedTime = formatTime(limitedTimeEnd)
+          Countdown.init(formatLimitedTime,'countdown', this)
+        }
+      })
+    },
+    modalStatus(val){
+      this.isShowModal = val
+    },
+    shareBtn(){
+      this.isShowModal = true
+    },
     changeTab(tab){
       this.tabs.map(item => {
         item.active = item.tabId === tab.tabId ? true : false
         this.tab = tab.tabId
       })
     },
+    praiseComment(id){
+      this.request.post('/api/course/praiseComment?type=1&courseId='+id).then(res => {
+        this.hasCountdown = false
+        this.getDetailInfo()
+      })
+    },
     fabulousComment(state){
-      state.isFabulous = !state.isFabulous
+      this.request.post('/api/course/praiseComment?type=1&commentId='+state.id).then(res => {
+        this.hasCountdown = false
+        this.getDetailInfo()
+      })
+    },
+    justPurchase(){
+      let {author, introduce, courseDescribe, tags, price, imgs, id, title} = this.courseInfo
+      let tempParams = {
+        id,
+        title,
+        author,
+        introduce,
+        courseDescribe,
+        tagList: tags.split(','),
+        price,
+        imgList: imgs.split(',')
+      }
+      let queryParams = JSON.stringify(tempParams)
+      let url = '/pages/makeOrder/main'
+      wx.navigateTo({
+        url: url + '?queryParams=' + queryParams
+      })
+    },
+    getCurrentPageUrl(){
+      var pages = getCurrentPages()    //获取加载的页面
+      var currentPage = pages[pages.length-1]    //获取当前页面的对象
+      var url = currentPage.route    //当前页面url
+      return url
     }
   },
+  onShareAppMessage(ops) {
+    let url = this.getCurrentPageUrl()
+    console.log('url===??', url)
+    this.isShowModal = false
+    if (ops.from === "button") {
+      // 来自页面内转发按钮
+      console.log(ops.target);
+    }
+    return {
+      title: "这个课程特别好",//这里是定义转发的标题
+      path: url,//这里是定义转发的地址
+      success: function(res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+        var shareTickets = res.shareTickets;
+        // if (shareTickets.length == 0) {
+        //   return false;
+        // }
+        // //可以获取群组信息
+        // wx.getShareInfo({
+        //   shareTicket: shareTickets[0],
+        //   success: function (res) {
+        //     console.log(res)
+        //   }
+        // })
+      },
+      fail: function(res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    };
+  },
   created () {
-     this.courseInfo.htmlForContent = this.courseInfo.htmlForContent.replace(/\<img/gi, '<img style="max-width:100%;height:auto" ');
-     this.courseInfo.htmlForLesson = this.courseInfo.htmlForLesson.replace(/\<img/gi, '<img style="max-width:100%;height:auto" ');
-     Countdown.init('2020-01-03 09:00:00','countdown', this)
   },
   onLoad(){
-    //  Countdown.init('2020-01-03 09:00:00','countdown', this)
-    //  console.log(this.countdown)
+    Object.assign(this.$data, this.$options.data())
+    this.hasCountdown = false
+    // this.getDetailInfo()
   }
 }
 </script>
@@ -221,6 +290,7 @@ export default {
                   vertical-align middle
               ._avatar
                 img
+                  border-radius 50%
                   width 60rpx
                   height 60rpx
             .commet_desc
@@ -229,6 +299,11 @@ export default {
               font-weight:400;
               color:rgba(51,51,51,1);
               line-height:34rpx;
+              .commet_piclist
+                display flex
+                img 
+                  width: 166rpx
+                  height 166rpx
         .content_tab
           display flex
           justify-content space-between
@@ -248,6 +323,15 @@ export default {
       .course_detail
         background:rgba(255,255,255,1);
         position relative
+        .ispraise_img
+          position absolute
+          right 10%
+          top 2.5%
+          z-index 100
+          img
+            width: 35rpx;
+            height: 36rpx;
+            vertical-align middle
         .course_share
           position absolute
           right 3%

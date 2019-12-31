@@ -1,0 +1,12 @@
+<template name="4cb76b00">
+  <view class="_div data-v-1c047b1c pages_login_main">
+    <view class="_div data-v-1c047b1c login_avatar">
+      <image src="/static/images/baobian_icon.png" alt class="_img data-v-1c047b1c"></image>
+    </view> <button class="_button data-v-1c047b1c login_reg_btn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">登录/注册</button>
+    <view class="_div data-v-1c047b1c wechat_reg_btn"> 微信手机号快捷登录 </view>
+    <view class="_div data-v-1c047b1c tips_msg">
+      <view class="_div data-v-1c047b1c _tips">若您的微信手机号未注册，将为您直接注册，注册即视为同意</view>
+      <view class="_div data-v-1c047b1c asignment_tip"> 豹变学院用户协议（含隐私政策） </view>
+    </view>
+  </view>
+</template>

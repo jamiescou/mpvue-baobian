@@ -1,37 +1,46 @@
 <template>
   <div class="pages_lesson_entry">
+    <shareModal :isShowModal="isShowModal" @modalStatus="modalStatus"></shareModal>
     <div class="search_body">
       <div class="search_lesson">
         <img src="/static/images/search.png" alt="">&nbsp;&nbsp;
-        <input type="text" placeholder="请输入关键字搜索" placeholder-style="color:rgba(153,153,153,1);font-size:24rpx;text-align: center"/>
+        <input type="text" v-model="content" @blur="searchCourse" placeholder="请输入关键字搜索" placeholder-style="color:rgba(153,153,153,1);font-size:24rpx;text-align: center"/>
       </div>
     </div>
-    <div class="course_container">
+    <div v-if="courseList.length > 0"  class="course_container">
       <!-- 课程列表 -->
-      <div class="course_list" v-for="item in courseList" :key="item.id" @click="goToDetail(item.id)">
+      <div class="course_list" v-for="(item, index) in courseList" :key="index" @click="goToDetail(item.id)">
         <div class="course_share" @touchstart.stop="shareBtn(item.id)">
           <img src="/static/images/share.png" alt="暂无图片">
         </div>
         <div class="course_poster">
-          <img :src="item.img" alt="暂无图片">
+          <img :src="item.imgsList&&item.imgsList[0]" alt="暂无图片">
         </div>
         <div class="describe_container">
           <p class="course_label">
-          {{item.label}}
+          {{item.title}}
           </p>
           <div class="course_name_title">
-            <span class="_name">{{item.name}}</span>&nbsp;&nbsp;<span class="_title">{{item.title}}</span>
+            <span class="_name">{{item.author}}</span>&nbsp;&nbsp;<span class="_title">{{item.introduce}}</span>
           </div>
           <div class="scan_times">
-            <img src="/static/images/scan.png" alt="">&nbsp;&nbsp;<span class="_times">{{item.scantimes}}万人次</span>
+            <img src="/static/images/scan.png" alt="">&nbsp;&nbsp;<span class="_times">{{item.viewNum}}万人次</span>
           </div>
           <div class="tag_list">
-            <span v-for="(tag, el) in item.tagList" :key="tag+el" class="_tags">{{tag}}</span>
+            <span v-for="(tag, el) in item.tagList" :key="el" class="_tags">{{tag}}</span>
           </div>
           <div class="course_price">
             ￥{{item.price}}
           </div>
         </div>
+      </div>
+    </div>
+    <div v-else class="no_lesson">
+      <div class="no_data_pic">
+        <img src="/static/images/no_data.png" alt="">
+      </div>
+      <div class="_text">
+        暂无课程记录
       </div>
     </div>
     <!-- 使用组件 -->
@@ -41,72 +50,103 @@
 
 <script>
 import tabBar from '@/components/tabBar'
-
+import shareModal from '@/components/shareModal'
 export default {
   data () {
     return {
-      courseList: [
-        {
-          label: '个人品牌，重构商业竞争力超级...',
-          name: '张大豆',
-          img: '/static/images/course.png',
-          id: 1,
-          title: '豹变学院院长、豹变IP创始人',
-          scantimes: 100,
-          tags: '标签系统,存在感,人格化IP',
-          price: 1999
-        },
-        {
-          label: '个人品牌，重构商业竞争力超级...',
-          name: '张大豆',
-          id: 2,
-          img: '/static/images/course.png',
-          title: '豹变学院院长、豹变IP创始人',
-          scantimes: 100,
-          tags: '标签系统,存在感,人格化IP',
-          price: 1999
-        },
-        {
-          label: '个人品牌，重构商业竞争力超级...',
-          name: '张大豆',
-          img: '/static/images/course.png',
-          id: 3,
-          title: '豹变学院院长、豹变IP创始人',
-          tags: '标签系统,存在感,人格化IP',
-          scantimes: 100,
-          price: 1999,
-        }
-      ]
+      isShowModal: false,
+      content: '',
+      courseList: []
     }
   },
   components: {
-    tabBar
+    tabBar, shareModal
   },
+  // // 上拉加载
+  // onReachBottom: function () {
+  // //执行上拉执行的功能
+  //   this._getRegisterInfo();
+  // },
+  // // 停止下拉刷新
+  // async onPullDownRefresh() {
+  //   // to doing..
+  //   // 停止下拉刷新
+  //   wx.stopPullDownRefresh();
+  // },
   methods: {
-    formatCourseList(){
-      let tempDataList = this.courseList
-      this.courseList = tempDataList.map(({tags, price, ...other}) => ({...other, tagList: tags.split(','), price: price.toFixed(2)}))
+    getCourseList(keyWord){
+      let params = {
+        url: '/api/course/courseList'
+      }
+      this.request.post(params.url+'?content='+keyWord).then(res => {
+        this.courseList = res.data && res.data.map(({tags, price,imgs, ...other}) => ({...other, tagList: tags.split(','),imgsList: imgs.split(','), price: price.toFixed(2)}))
+      })
+    },
+    searchCourse() {
+      console.log('===>>>', this.content)
+      this.getCourseList(this.content)
+    },
+    modalStatus(val){
+      this.isShowModal = val
     },
     shareBtn(id){
+      this.isShowModal = true
       console.log('id====>', id)
     },
     goToDetail(id){
       let url = '/pages/courseDetail/main'
       wx.navigateTo({
-        url
+        url: url + "?id=" + id
       })
     }
   },
+  onShow(){
+    this.getCourseList('')
+  },
+  onLoad(){
+    Object.assign(this.$data, this.$options.data())
+  },
+  onShareAppMessage(ops) {
+    let url = getCurrentPageUrl()
+    console.log('url===??', url)
+    this.isShowModal = false
+    if (ops.from === "button") {
+      // 来自页面内转发按钮
+      console.log(ops.target);
+    }
+    return {
+      title: "转发的demo",//这里是定义转发的标题
+      path: `../productDetail/main`,//这里是定义转发的地址
+      success: function(res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+        var shareTickets = res.shareTickets;
+        // if (shareTickets.length == 0) {
+        //   return false;
+        // }
+        // //可以获取群组信息
+        // wx.getShareInfo({
+        //   shareTicket: shareTickets[0],
+        //   success: function (res) {
+        //     console.log(res)
+        //   }
+        // })
+      },
+      fail: function(res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    };
+  },
   created () {
-    this.formatCourseList()
   }
 }
 </script>
 <style lang="stylus" scoped>
   .pages_lesson_entry
     width 100%
-    height 100%
-    padding-bottom 160rpx
+    height 1000rpx
+    padding-bottom 200rpx
     background rgba(241,241,241,1)
     .search_body
       margin 0 2%
@@ -130,6 +170,7 @@ export default {
           width 28px
           height 28px
     .course_container
+      margin-bottom 200rpx;
       .course_list
         background:rgba(255,255,255,1);
         position relative
@@ -199,4 +240,18 @@ export default {
             font-size 28rpx
             font-weight 400
             color rgba(255,255,255,1)
+.no_lesson{
+  text-align: center;
+  margin: 50% auto;
+}
+.no_lesson .no_data_pic img{
+  width: 94rpx;
+  height: 100rpx;
+}
+.no_lesson ._text{
+  margin-top: 50rpx;
+  font-size:32rpx;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+}
 </style>

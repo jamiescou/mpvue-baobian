@@ -1,0 +1,61 @@
+@import "../../common/vendor.wxss";
+
+._button.data-v-1c047b1c::after {
+  border: none;
+}
+.pages_login_main.data-v-1c047b1c {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.pages_login_main .tips_msg.data-v-1c047b1c {
+  position: absolute;
+  width: 100%;
+  bottom: 80rpx;
+  left: 3%;
+}
+.pages_login_main ._tips.data-v-1c047b1c {
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #333;
+}
+.pages_login_main .asignment_tip.data-v-1c047b1c {
+  font-size: 26rpx;
+  font-weight: 400;
+  color: rgba(255,178,137,0.314);
+}
+.pages_login_main .wechat_reg_btn.data-v-1c047b1c {
+  width: 90%;
+  font-size: 32rpx;
+  font-weight: 400;
+  margin: 0 auto;
+  margin-top: 40rpx;
+  text-align: center;
+  line-height: 98rpx;
+  height: 98rpx;
+  background: linear-gradient(0deg, #ac8148, #f9dba7);
+  border-radius: 49rpx;
+  color: #fff;
+}
+.pages_login_main .login_reg_btn.data-v-1c047b1c {
+  width: 90%;
+  font-size: 32rpx;
+  font-weight: 400;
+  color: #333;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 98rpx;
+  height: 98rpx;
+  background: #f1f1f1;
+  border-radius: 49rpx;
+}
+.pages_login_main .login_avatar.data-v-1c047b1c {
+  margin: 0 auto;
+  margin-top: 100rpx;
+  margin-bottom: 70rpx;
+  text-align: center;
+}
+.pages_login_main .login_avatar ._img.data-v-1c047b1c {
+  width: 308rpx;
+  height: 267rpx;
+}

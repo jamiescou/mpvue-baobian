@@ -1,0 +1,17 @@
+<import src="/components/cardTable.vue.wxml" /><template name="2cdaba9c">
+  <view class="_div data-v-7ddd3700 pages_my_lesson">
+    <view class="_div data-v-7ddd3700 order_tab">
+      <view class="_div data-v-7ddd3700 tab_item  {{tab.isActive ? 'activeTab' : ''}}" wx:key="tab.name" key="{{tab.name}}" bindtap="handleProxy" data-eventid="{{'0_'+index}}" data-comkey="{{$k}}" wx:for="{{tabs}}" wx:for-index="index" wx:for-item="tab">
+        {{tab.name}}
+      </view>
+    </view>
+    <view style="margin-top: 109rpx;margin-bottom: 88rpx" wx:if="{{myOrderList.length>0}}" class="_div data-v-7ddd3700"><template wx:key="item.id" data="{{...$root[$kk+'0_'+index], $root}}" is="2e42cd65" wx:for="{{myOrderList}}" wx:for-index="index" wx:for-item="item"></template></view>
+    <view wx:else class="_div data-v-7ddd3700 no_lesson">
+      <view class="_div data-v-7ddd3700 no_data_pic">
+        <image src="/static/images/no_data.png" alt class="_img data-v-7ddd3700"></image>
+      </view>
+      <view class="_div data-v-7ddd3700 _text"> 暂无课程记录 </view>
+    </view>
+    <view wx:if="{{curTab === 0 && myOrderList.length>0}}" class="_div data-v-7ddd3700 slogan_fixed"> 你的IP 我来成就 </view>
+  </view>
+</template>

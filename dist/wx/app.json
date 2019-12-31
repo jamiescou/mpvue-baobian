@@ -4,6 +4,16 @@
     "pages/lesson/main",
     "pages/courseDetail/main",
     "pages/teacherDetail/main",
+    "pages/makeOrder/main",
+    "pages/myInfo/main",
+    "pages/myLesson/main",
+    "pages/myBalance/main",
+    "pages/myCoupon/main",
+    "pages/comment/main",
+    "pages/payPage/main",
+    "pages/paySuccess/main",
+    "pages/bindPhone/main",
+    "pages/loginPage/main",
     "pages/my/main"
   ],
   "window": {
@@ -13,6 +23,7 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
+
     "custom":true,
     "color": "#999",
     "backgroundColor": "#fafafa",

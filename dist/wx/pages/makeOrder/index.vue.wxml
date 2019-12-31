@@ -1,0 +1,32 @@
+<template name="0d5a14e8">
+  <view class="_div data-v-25b38cda pages_make_order">
+    <view class="_div data-v-25b38cda star_teacher">
+      <view class="_div data-v-25b38cda star_lesson">
+        <view class="_div data-v-25b38cda">
+          <image src="/static/images/baobian_icon.png" alt class="_img data-v-25b38cda"></image>
+        </view>
+        <view class="_div data-v-25b38cda _collage">豹变学院</view>
+      </view>
+      <view class="_div data-v-25b38cda teacher_list">
+        <view class="_div data-v-25b38cda left_avatar">
+          <image src="{{courseInfo.imgList[0]}}" alt class="_img data-v-25b38cda"></image>
+        </view>
+        <view class="_div data-v-25b38cda right_content">
+          <view class="_div data-v-25b38cda class_title">
+            {{courseInfo.title}}
+          </view>
+          <view class="_div data-v-25b38cda teacher_name_and_title"><label class="_span data-v-25b38cda _name">{{courseInfo.author}}</label>  <label class="_span data-v-25b38cda _title">{{courseInfo.introduce}}</label></view>
+          <view class="_div data-v-25b38cda tag_list"><label wx:key="tag+el" key="{{tag+el}}" class="_span data-v-25b38cda _tags" wx:for="{{courseInfo.tagList}}" wx:for-index="el" wx:for-item="tag">{{tag}}</label></view>
+          <view class="_div data-v-25b38cda price_number">
+            <view class="_div data-v-25b38cda _price">￥{{courseInfo.price}}</view>
+            <view class="_div data-v-25b38cda goods_number"><label bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_span data-v-25b38cda">-</label><input type="number" value="{{goodsNumber}}" bindinput="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_input data-v-25b38cda" /><label bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_span data-v-25b38cda">+</label></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-25b38cda dicount_make_order">
+      <view class="_div data-v-25b38cda _discount"> 合计：<label class="_span data-v-25b38cda">￥{{discountPrice}}</label></view>
+      <view class="_div data-v-25b38cda order_submit" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}"> 提交订单 </view>
+    </view>
+  </view>
+</template>

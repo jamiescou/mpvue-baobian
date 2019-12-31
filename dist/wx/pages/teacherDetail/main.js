@@ -1,42 +1,49 @@
 require("../../common/manifest.js")
 require("../../common/vendor.js")
-global.webpackJsonpMpvue([1],{
+global.webpackJsonpMpvue([2],{
 
-/***/ 119:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 218:
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(120);
 
 
+var _vue = __webpack_require__(1);
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _index = __webpack_require__(219);
+
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // add this to handle exception
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.config.errorHandler = function (err) {
+_vue2.default.config.errorHandler = function (err) {
   if (console && console.error) {
     console.error(err);
   }
 };
 
-var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__index__["a" /* default */]);
+var app = new _vue2.default(_index2.default);
 app.$mount();
 
 /***/ }),
 
-/***/ 120:
+/***/ 219:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_template_compiler_index_id_data_v_64a1b26d_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(123);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_script_index_0_index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_script_index_0_index_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_template_compiler_index_id_data_v_64a1b26d_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(222);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(121)
+  __webpack_require__(220)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 
 /* template */
@@ -48,7 +55,7 @@ var __vue_scopeId__ = "data-v-64a1b26d"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_script_index_0_index_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_script_index_0_index_vue___default.a,
   __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_template_compiler_index_id_data_v_64a1b26d_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_2_0_1_mpvue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
   __vue_styles__,
   __vue_scopeId__,
@@ -74,49 +81,46 @@ if (false) {(function () {
   })
 })()}
 
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
 
 
 /***/ }),
 
-/***/ 121:
+/***/ 220:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 122:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 221:
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_countdown_js__ = __webpack_require__(44);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _stringify = __webpack_require__(14);
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
+var _assign = __webpack_require__(3);
+
+var _assign2 = _interopRequireDefault(_assign);
+
+var _countdown = __webpack_require__(73);
+
+var _countdown2 = _interopRequireDefault(_countdown);
+
+var _shareModal = __webpack_require__(46);
+
+var _shareModal2 = _interopRequireDefault(_shareModal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 //
 //
 //
@@ -155,193 +159,193 @@ if (false) {(function () {
 //
 //
 
-
-/* harmony default export */ __webpack_exports__["a"] = ({
+exports.default = {
+  components: {
+    shareModal: _shareModal2.default
+  },
   data: function data() {
     return {
+      isShowModal: false,
       countdown: {},
-      courseInfo: {
-        label: '个人品牌，重构商业竞争力超级...',
-        name: '张大豆',
-        img: '/static/images/course.png',
-        id: 1,
-        title: '豹变学院院长、豹变IP创始人',
-        price: 1999,
-        oldprice: 2999,
-        desc: '个人品牌重构商业竞争力，这是个不错的课程............................',
-        htmlForContent: '<div>\n                    <div>\u521B\u59CB\u4EBA\u54C1\u724C\u547D\u95E8\u4E4B\u8BA4\u77E5\u91CD\u751F</div>\n                    <div>\u521B\u59CB\u4EBA\u54C1\u724C\u547D\u95E8\u4E4B\u8BA4\u77E5\u91CD\u751F</div>\n                    <div><img height=\'200\' src=\'http://storage.zone.photo.sina.com.cn/zone/1000_0/20191217/d86c2df6fbf2b8d07c33fe508595050d_3024_3024.jpg?&ssig=60doVKd%2F%2FV&KID=sina,slidenews&Expires=1576556973\'/></div>\n                  </div>',
-        htmlForLesson: '<div>\n                    <div>\u8FD9\u91CC\u662F\u8BFE\u7A0B\u5185\u5BB9</div>\n                    <div>\u8FD9\u91CC\u662F\u8BFE\u7A0B\u5185\u5BB9</div>\n                    <div><img height=\'200\' src=\'http://storage.zone.photo.sina.com.cn/zone/1000_0/20191217/d86c2df6fbf2b8d07c33fe508595050d_3024_3024.jpg?&ssig=60doVKd%2F%2FV&KID=sina,slidenews&Expires=1576556973\'/></div>\n                  </div>'
-      },
-      comments: [{
-        img: '/static/images/avatar.png',
-        id: 1,
-        nickname: '艾克斯',
-        comment: '创始人品牌命门之认知重生创始人品牌命门之认知重生创始人品牌命门之认知重生创始人品牌命门之认知重生创始人品牌命门之认知重生创始人品牌命门之认知重生',
-        isFabulous: true
-      }, {
-        img: '/static/images/avatar.png',
-        id: 2,
-        nickname: '埃克斯',
-        comment: '这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容',
-        isFabulous: true
-      }],
-
+      videoContext: null,
+      playFlag: false,
+      courseInfo: {},
+      comments: [],
       tab: 1,
       tabs: [{ label: '课程导览', tabId: 1, active: true }, { label: '课程内容', tabId: 2, active: false }]
     };
   },
 
-  components: {},
+  onReady: function onReady(res) {
+    // this.videoContext = wx.createVideoContext('myVideo')
+  },
+  onLoad: function onLoad() {
+    (0, _assign2.default)(this.$data, this.$options.data());
+  },
+  mounted: function mounted() {
+    this.videoContext = wx.createVideoContext('myVideo');
+  },
+
   methods: {
-    changeTab: function changeTab(tab) {
+    getDetailInfo: function getDetailInfo() {
       var _this = this;
+
+      var id = this.$root.$mp.query.id;
+      var url = '/api/teacher/getTeacherDetail?id=' + id;
+      this.request.post(url).then(function (res) {
+        _this.courseInfo = res.data;
+      });
+    },
+    changeTab: function changeTab(tab) {
+      var _this2 = this;
 
       this.tabs.map(function (item) {
         item.active = item.tabId === tab.tabId ? true : false;
-        _this.tab = tab.tabId;
+        _this2.tab = tab.tabId;
       });
     },
     fabulousComment: function fabulousComment(state) {
       state.isFabulous = !state.isFabulous;
+    },
+    shareBtn: function shareBtn() {
+      this.isShowModal = true;
+    },
+    playCourse: function playCourse(res) {
+      this.playFlag = !this.playFlag;
+      if (!this.playFlag) {
+        this.videoContext.pause();
+      } else {
+        this.videoContext.play();
+      }
+    },
+    pauseCourse: function pauseCourse() {
+      this.videoContext.pause();
+    },
+    shareFriends: function shareFriends() {},
+    sharePoster: function sharePoster() {},
+    modalStatus: function modalStatus(val) {
+      this.isShowModal = val;
     }
   },
-  created: function created() {
-    this.courseInfo.htmlForContent = this.courseInfo.htmlForContent.replace(/\<img/gi, '<img style="max-width:100%;height:auto" ');
-    this.courseInfo.htmlForLesson = this.courseInfo.htmlForLesson.replace(/\<img/gi, '<img style="max-width:100%;height:auto" ');
-    __WEBPACK_IMPORTED_MODULE_0__utils_countdown_js__["a" /* default */].init('2020-01-03 09:00:00', 'countdown', this);
+  created: function created() {},
+  onShareAppMessage: function onShareAppMessage(ops) {
+    var url = getCurrentPageUrl();
+    console.log('url===??', url);
+    this.isShowModal = false;
+    if (ops.from === "button") {
+      // 来自页面内转发按钮
+      console.log(ops.target);
+    }
+    return {
+      title: "转发的demo", //这里是定义转发的标题
+      path: '../productDetail/main', //这里是定义转发的地址
+      success: function success(res) {
+        // 转发成功
+        console.log("转发成功:" + (0, _stringify2.default)(res));
+        var shareTickets = res.shareTickets;
+        // if (shareTickets.length == 0) {
+        //   return false;
+        // }
+        // //可以获取群组信息
+        // wx.getShareInfo({
+        //   shareTicket: shareTickets[0],
+        //   success: function (res) {
+        //     console.log(res)
+        //   }
+        // })
+      },
+      fail: function fail(res) {
+        // 转发失败
+        console.log("转发失败:" + (0, _stringify2.default)(res));
+      }
+    };
   },
-  onLoad: function onLoad() {
-    //  Countdown.init('2020-01-03 09:00:00','countdown', this)
-    //  console.log(this.countdown)
+  onShow: function onShow() {
+    this.getDetailInfo();
   }
-});
+};
 
 /***/ }),
 
-/***/ 123:
+/***/ 222:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "pages_teacher_detail"
-  }, [_c('div', {
+  }, [_c('shareModal', {
+    attrs: {
+      "isShowModal": _vm.isShowModal,
+      "eventid": '0',
+      "mpcomid": '0'
+    },
+    on: {
+      "modalStatus": _vm.modalStatus
+    }
+  }), _vm._v(" "), _c('div', {
     staticClass: "course_container"
   }, [_c('div', {
     staticClass: "course_detail"
   }, [_c('div', {
     staticClass: "course_share",
     attrs: {
-      "eventid": '0'
+      "eventid": '1'
     },
     on: {
-      "click": function($event) {
-        _vm.shareBtn(_vm.courseInfo.id)
-      }
+      "click": _vm.shareBtn
     }
   }, [_c('img', {
     attrs: {
       "src": "/static/images/share.png",
       "alt": "暂无图片"
     }
-  })]), _vm._v(" "), _c('div', {
+  })]), _vm._v(" "), (_vm.courseInfo.urlType === 1) ? _c('div', {
     staticClass: "course_poster"
   }, [_c('img', {
     attrs: {
-      "src": _vm.courseInfo.img,
+      "src": _vm.courseInfo.url,
       "alt": "暂无图片"
     }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "lesson_describe"
-  }, [_c('div', {
-    staticClass: "content_tab"
-  }, _vm._l((_vm.tabs), function(tab, index) {
-    return _c('div', {
-      key: tab.tabId,
-      staticClass: "_tabs",
-      class: tab.active ? 'active' : '',
-      attrs: {
-        "eventid": '1_' + index
-      },
-      on: {
-        "click": function($event) {
-          _vm.changeTab(tab, index)
-        }
-      }
-    }, [_vm._v("\n          " + _vm._s(tab.label) + "\n        ")])
-  })), _vm._v(" "), (_vm.tab === 1) ? _c('div', {
-    staticClass: "content_describe"
-  }, [_c('div', {
-    domProps: {
-      "innerHTML": _vm._s(_vm.courseInfo.htmlForContent)
+  })]) : _vm._e(), _vm._v(" "), (_vm.courseInfo.urlType === 2) ? _c('div', {
+    staticClass: "course_poster"
+  }, [_c('video', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "id": "myVideo",
+      "show-play-btn": "",
+      "src": _vm.courseInfo.url,
+      "controls": "",
+      "eventid": '2'
+    },
+    on: {
+      "click": _vm.playCourse
     }
-  })]) : _vm._e(), _vm._v(" "), (_vm.tab === 2) ? _c('div', {
-    staticClass: "content_describe"
-  }, [_c('div', {
-    domProps: {
-      "innerHTML": _vm._s(_vm.courseInfo.htmlForLesson)
+  })]) : _vm._e(), _vm._v(" "), (_vm.courseInfo.urlType === 2 && !_vm.playFlag) ? _c('div', {
+    staticClass: "course_play",
+    attrs: {
+      "eventid": '3'
+    },
+    on: {
+      "click": _vm.playCourse
     }
-  })]) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "course_commet"
-  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.comments), function(comment, index) {
-    return _c('div', {
-      key: comment.id,
-      staticClass: "commet_list"
-    }, [_c('div', {
-      staticClass: "commet_head"
-    }, [_c('div', {
-      staticClass: "_avatar"
-    }, [_c('img', {
-      attrs: {
-        "src": comment.img,
-        "alt": ""
-      }
-    })]), _vm._v(" "), _c('div', {
-      staticClass: "_nickname"
-    }, [_vm._v("\n              " + _vm._s(comment.nickname) + "\n            ")]), _vm._v(" "), _c('div', {
-      staticClass: "fabulous_img"
-    }, [(!comment.isFabulous) ? _c('img', {
-      attrs: {
-        "src": "/static/images/fabulous.png",
-        "alt": "",
-        "eventid": '2_' + index
-      },
-      on: {
-        "click": function($event) {
-          _vm.fabulousComment(comment)
-        }
-      }
-    }) : _vm._e(), _vm._v(" "), (comment.isFabulous) ? _c('img', {
-      attrs: {
-        "src": "/static/images/fabulous_active.png",
-        "alt": "",
-        "eventid": '3_' + index
-      },
-      on: {
-        "click": function($event) {
-          _vm.fabulousComment(comment)
-        }
-      }
-    }) : _vm._e()])]), _vm._v(" "), _c('div', {
-      staticClass: "commet_desc"
-    }, [_vm._v("\n            " + _vm._s(comment.comment) + "\n          ")])])
-  })], 2)])]), _vm._v(" "), _vm._m(1)])
-}
-var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "_commet_title"
-  }, [_c('span', {
-    staticClass: "commet_line"
-  }, [_vm._v("\n            学员评论\n          ")])])
-},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }, [_c('img', {
+    attrs: {
+      "src": "/static/images/play.png",
+      "alt": "暂无图片"
+    }
+  })]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "lesson_describe",
+    domProps: {
+      "innerHTML": _vm._s(_vm.courseInfo.content)
+    }
+  })]), _vm._v(" "), _c('div', {
     staticClass: "footer_button"
-  }, [_c('div', {
-    staticClass: "course_recommend"
-  }, [_vm._v("\n      我要推荐\n    ")]), _vm._v(" "), _c('div', {
-    staticClass: "just_purchase"
-  }, [_vm._v("\n      立即购买\n    ")])])
-}]
+  }, [_vm._v("\n    你的IP 我来成就\n  ")])], 1)
+}
+var staticRenderFns = []
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -354,4 +358,4 @@ if (false) {
 
 /***/ })
 
-},[119]);
+},[218]);

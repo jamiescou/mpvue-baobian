@@ -1,0 +1,1 @@
+<import src="/pages/myBalance/index.vue.wxml" /><template is="2c6c6b10" data="{{ ...$root['0'], $root }}"/>

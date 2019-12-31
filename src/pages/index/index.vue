@@ -2,21 +2,22 @@
   <div class="pages_main_entry">
     <div class="_top">
       <!-- 顶部广告图 -->
-      <img class="header_banner" src="/static/images/banner.jpg" alt="">
+      <img class="header_banner" :src="mainPic.img" alt="">
     </div>
     <div class="product_list">
       <div class="product_item"
-        v-for="item in productList"
-        :key="item.id">
+        v-for="(item, index) in productList"
+        :key="index"
+        @click="goToProduct(item)">
         <div class="item_left">
-          <img :src="item.icon" alt="超级公开课">
+          <img :src="item.img" alt="超级公开课">
         </div>
         <div class="item_right">
           <div class="_title">
-            {{item.name}}
+            {{item.title}}
           </div>
           <div class="_desc">
-            {{item.desc}}
+            {{item.secondTitle}}
           </div>
         </div>
       </div>
@@ -26,22 +27,22 @@
       <div class="big_title">
         明星导师
       </div>
-      <div class="teacher_list" v-for="(item, index) in teacherList" :key="index+id" @click="goDetail">
+      <div class="teacher_list" v-for="(item, even) in teacherList" :key="even" @click="goDetail(item.id)">
         <div class="left_avatar">
-          <img :src="item.icon" alt="">
+          <img :src="item.headImg" alt="">
         </div>
         <div class="right_content">
           <div class="class_title">
-            {{item.label}}
+            {{item.title}}
           </div>
           <div class="teacher_name_and_title">
-            <span class="_name">{{item.name}}</span>&nbsp;&nbsp;<span class="_title">{{item.title}}</span>
+            <span class="_name">{{item.name}}</span>&nbsp;&nbsp;<span class="_title">{{item.introduce}}</span>
           </div>
           <div class="scan_times">
-            <img src="/static/images/scan.png" alt="">&nbsp;&nbsp;<span class="_times">{{item.scantimes}}万人次</span>
+            <img src="/static/images/scan.png" alt="">&nbsp;&nbsp;<span class="_times">{{item.viewNum}}万人次</span>
           </div>
           <div class="tag_list">
-            <span v-for="(tag, el) in item.tagList" :key="tag+el" class="_tags">{{tag}}</span>
+            <span v-for="(tag, el) in item.tagList" :key="el" class="_tags">{{tag}}</span>
           </div>
         </div>
       </div>
@@ -53,80 +54,16 @@
 </template>
 
 <script>
-// import card from '@/components/card'
 import tabBar from '@/components/tabBar'
 
 export default {
   data () {
     return {
-      productList: [
-        {
-          icon: '/static/images/superstar.png',
-          name: '超级公开课',
-          id: 1,
-          desc: '个人品牌•重构商业竞争力'
-        },
-        {
-          icon: '/static/images/superstar.png',
-          name: '超级公开课',
-          id: 2,
-          desc: '个人品牌•重构商业竞争力'
-        },
-        {
-          icon: '/static/images/superstar.png',
-          name: '超级公开课',
-          id: 3,
-          desc: '个人品牌•重构商业竞争力'
-        },
-        {
-          icon: '/static/images/superstar.png',
-          name: '超级公开课',
-          id: 4,
-          desc: '个人品牌•重构商业竞争力'
-        },
-        {
-          icon: '/static/images/superstar.png',
-          name: '超级公开课',
-          id: 5,
-          desc: '个人品牌•重构商业竞争力'
-        },
-        {
-          icon: '/static/images/superstar.png',
-          name: '超级公开课',
-          id: 5,
-          desc: '个人品牌•重构商业竞争力'
-        }
-      ],
-      teacherList: [
-        {
-          icon: '/static/images/teacher.png',
-          name: '张大豆',
-          label: '个人品牌，重构商业竞争力超级...',
-          title: '豹变学院院长、豹变IP创始人',
-          id: 1,
-          scantimes: 1000,
-          tag: 'IP思维,asasa,assa'
-        },
-        {
-          icon: '/static/images/teacher.png',
-          name: '张大豆',
-          label: '个人品牌，重构商业竞争力超级...',
-          title: '豹变学院院长、豹变IP创始人',
-          id: 1,
-          scantimes: 1000,
-          tag: 'IP思维,asasa,assa'
-        },
-        {
-          icon: '/static/images/teacher.png',
-          name: '张大豆',
-          label: '个人品牌，重构商业竞争力超级...',
-          title: '豹变学院院长、豹变IP创始人',
-          id: 1,
-          scantimes: 1000,
-          tag: 'IP思维,asasa,assa'
-        }
-        
-      ]
+      mainPic: {
+        img: ''
+      },
+      productList: [],
+      teacherList: []
     }
   },
 
@@ -135,22 +72,70 @@ export default {
   },
 
   methods: {
-    goDetail(){
+    goDetail(id){
       let url = '/pages/teacherDetail/main'
+      // let url = '/pages/loginPage/main'
       wx.navigateTo({
-        url
+        url: url + '?id=' + id
       })
     },
-    formatCourseList(){
-      let tempDataList = this.teacherList
-      this.teacherList = tempDataList.map(({tag, ...other}) => ({...other, tagList: tag.split(',')}))
+    goToProduct(info){
+      console.log('====>>>', info)
+      if (info.jumpType === 2) {
+        wx.navigateTo({
+          url: '/pages/courseDetail/main?id=' + info.jumpUrl
+        })
+      } else {
+        wx.showToast({
+          icon: "loading",
+          title: "正建设中..."
+        })
+      }
     },
     shareBtn(id){
       console.log('id====>', id)
+    },
+    getMainInfo(){
+      let paramData = {
+        url: '/api/banner/getBannerList',
+        data: {
+          "type": "1",
+          "classId": null
+        }
+      }
+      this.request.post(paramData.url, paramData.data).then(res => {
+        console.log('res===?>>>', res)
+        this.mainPic = res.data[0].bannerList[0]
+      })
+      this.request.post('/api/teacher/getTeacherList').then(res => {
+        this.teacherList = res.data && res.data.map(({tags, ...other}) => ({...other, tagList: tags.split(',')}))
+      })
+    },
+    getCourseInfo(){
+      let paramData = {
+        url: '/api/banner/getBannerList',
+        data: {
+          "type": "2",
+          "classId": null
+        }
+      }
+      this.request.post(paramData.url, paramData.data).then(res => {
+        this.productList = res.data[0] && res.data[0].bannerList
+      })
+      this.request.post('/api/teacher/getTeacherList', {}).then(res => {
+        this.teacherList = res.data && res.data.map(({tags, ...other}) => ({...other, tagList: tags.split(',')}))
+      })
     }
   },
   created () {
-    this.formatCourseList()
+    // this.formatCourseList()
+  },
+  onLoad(){
+    Object.assign(this.$data, this.$options.data())
+    this.getMainInfo()
+    this.getCourseInfo()
+  },
+  onShow(){
   }
 }
 </script>

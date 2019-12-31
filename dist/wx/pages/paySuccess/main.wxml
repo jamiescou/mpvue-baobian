@@ -1,0 +1,1 @@
+<import src="/pages/paySuccess/index.vue.wxml" /><template is="5ab0d52e" data="{{ ...$root['0'], $root }}"/>

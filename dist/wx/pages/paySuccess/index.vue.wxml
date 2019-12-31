@@ -1,0 +1,22 @@
+<template name="5ab0d52e">
+  <view class="_div data-v-7505c892 pages_pay_success">
+    <view class="_div data-v-7505c892 black_icon">
+      <view class="_div data-v-7505c892 pay_icon">
+        <image src="/static/images/paygood.png" alt class="_img data-v-7505c892"></image>
+      </view>
+      <view class="_div data-v-7505c892 pay_success"> 支付成功 </view>
+    </view>
+    <view class="_div data-v-7505c892 order_detail">
+      <view class="_div data-v-7505c892 order_money"> ￥ 1998.00 </view>
+      <view class="_div data-v-7505c892 detail_label label_common"> 订单编号：836372039473 </view>
+      <view class="_div data-v-7505c892 order_time label_common"> 下单时间：2019-12-21 20:32:12 </view>
+      <view class="_div data-v-7505c892 order_type label_common"> 支付方式：微信支付 </view>
+    </view>
+    <view class="_div data-v-7505c892 pay_type_menu" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+      {{payType === "continue" ? '继续支付' : '完善资料'}}
+    </view>
+    <view class="_div data-v-7505c892 menu_tips">
+      {{payType === "continue" ? '点击按钮，继续支付完成交易' : '点击按钮，填写资料完成交易'}}
+    </view>
+  </view>
+</template>

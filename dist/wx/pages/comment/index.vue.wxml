@@ -1,0 +1,20 @@
+<import src="/components/upload.vue.wxml" /><template name="20c5d1c7">
+  <view class="_div data-v-76bec38e pages_comment">
+    <view class="_div data-v-76bec38e card_lesson">
+      <view class="_div data-v-76bec38e lesson_pic">
+        <image src="{{courseInfo.icon}}" alt class="_img data-v-76bec38e"></image>
+      </view>
+      <view class="_div data-v-76bec38e right_content">
+        <view class="_div data-v-76bec38e class_title">
+          {{courseInfo.courseTitle}}
+        </view>
+        <view class="_div data-v-76bec38e teacher_name_and_title"><label class="_span data-v-76bec38e _name">{{courseInfo.courseAuthor}}</label>  <label class="_span data-v-76bec38e _title">{{courseInfo.courseIntroduce}}</label></view>
+        <view class="_div data-v-76bec38e tag_list"><label wx:key="el" key="{{el}}" class="_span data-v-76bec38e _tags" wx:for="{{courseInfo.tagList}}" wx:for-index="el" wx:for-item="tag">{{tag}}</label></view>
+      </view>
+    </view>
+    <view class="_div data-v-76bec38e comment_container">
+      <view class="_div data-v-76bec38e _title"> 评价 </view>
+      <view class="_div data-v-76bec38e comment_field">
+        <view class="_div data-v-76bec38e textarea_field"><textarea style="height: 100rpx" value="{{comment}}" bindinput="handleProxy" placeholder="课程对你是否有帮助？" placeholder-style="font-size: 26rpx;font-weight: 400;color: #999999" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_textarea data-v-76bec38e" /></view> <template width="164rpx" height="164rpx" max="6" bindchoosed="handleProxy" binddelete="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="3ebd416c"></template></view></view> <view class="_div data-v-76bec38e commet_publish" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}">
+    发布
+  </view></view></template>

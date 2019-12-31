@@ -1,0 +1,19 @@
+<import src="/components/editTable.vue.wxml" /><template name="3f548a68">
+  <view class="_div data-v-239567b6 pages_my_info">
+    <view class="_div data-v-239567b6 myspace_container">
+      <view class="_div data-v-239567b6 myspace_bg">
+        <image src="/static/images/banner.jpg" alt class="_img data-v-239567b6"></image>
+        <view class="_div data-v-239567b6 user_info">
+          <view class="_div data-v-239567b6 user_avatar">
+            <image src="{{userInfo.headImg}}" alt class="_img data-v-239567b6"></image>
+          </view>
+          <view class="_div data-v-239567b6 nickname_">
+            {{userInfo.name}}
+          </view>
+          <view class="_div data-v-239567b6 user_desc"> 豹变学员 </view>
+        </view>
+      </view>
+      <view class="_div data-v-239567b6"><template data="{{...$root[$kk+'0'], $root}}" is="2aea93ab"></template></view>
+    </view>
+  </view>
+</template>

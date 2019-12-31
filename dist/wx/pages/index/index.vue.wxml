@@ -1,38 +1,38 @@
 <import src="/components/tabBar.vue.wxml" /><template name="d4c1908c">
   <view class="_div data-v-73730ea8 pages_main_entry">
     <view class="_div data-v-73730ea8 _top">
-      <image class="_img data-v-73730ea8 header_banner" src="/static/images/banner.jpg" alt></image>
+      <image class="_img data-v-73730ea8 header_banner" src="{{mainPic.img}}" alt></image>
     </view>
     <view class="_div data-v-73730ea8 product_list">
-      <view class="_div data-v-73730ea8 product_item" wx:key="item.id" key="{{item.id}}" wx:for="{{productList}}" wx:for-index="index" wx:for-item="item">
+      <view class="_div data-v-73730ea8 product_item" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'0_'+index}}" data-comkey="{{$k}}" wx:for="{{productList}}" wx:for-index="index" wx:for-item="item">
         <view class="_div data-v-73730ea8 item_left">
-          <image src="{{item.icon}}" alt="超级公开课" class="_img data-v-73730ea8"></image>
+          <image src="{{item.img}}" alt="超级公开课" class="_img data-v-73730ea8"></image>
         </view>
         <view class="_div data-v-73730ea8 item_right">
           <view class="_div data-v-73730ea8 _title">
-            {{item.name}}
+            {{item.title}}
           </view>
           <view class="_div data-v-73730ea8 _desc">
-            {{item.desc}}
+            {{item.secondTitle}}
           </view>
         </view>
       </view>
     </view>
     <view class="_div data-v-73730ea8 star_teacher">
       <view class="_div data-v-73730ea8 big_title"> 明星导师 </view>
-      <view class="_div data-v-73730ea8 teacher_list" wx:key="index+id" key="{{index+id}}" bindtap="handleProxy" data-eventid="{{'0_'+index}}" data-comkey="{{$k}}" wx:for="{{teacherList}}" wx:for-index="index" wx:for-item="item">
+      <view class="_div data-v-73730ea8 teacher_list" wx:key="even" key="{{even}}" bindtap="handleProxy" data-eventid="{{'1_'+even}}" data-comkey="{{$k}}" wx:for="{{teacherList}}" wx:for-index="even" wx:for-item="item">
         <view class="_div data-v-73730ea8 left_avatar">
-          <image src="{{item.icon}}" alt class="_img data-v-73730ea8"></image>
+          <image src="{{item.headImg}}" alt class="_img data-v-73730ea8"></image>
         </view>
         <view class="_div data-v-73730ea8 right_content">
           <view class="_div data-v-73730ea8 class_title">
-            {{item.label}}
+            {{item.title}}
           </view>
-          <view class="_div data-v-73730ea8 teacher_name_and_title"><label class="_span data-v-73730ea8 _name">{{item.name}}</label>  <label class="_span data-v-73730ea8 _title">{{item.title}}</label></view>
+          <view class="_div data-v-73730ea8 teacher_name_and_title"><label class="_span data-v-73730ea8 _name">{{item.name}}</label>  <label class="_span data-v-73730ea8 _title">{{item.introduce}}</label></view>
           <view class="_div data-v-73730ea8 scan_times">
-            <image src="/static/images/scan.png" alt class="_img data-v-73730ea8"></image>  <label class="_span data-v-73730ea8 _times">{{item.scantimes}}万人次</label>
+            <image src="/static/images/scan.png" alt class="_img data-v-73730ea8"></image>  <label class="_span data-v-73730ea8 _times">{{item.viewNum}}万人次</label>
           </view>
-          <view class="_div data-v-73730ea8 tag_list"><label wx:key="tag+el" key="{{tag+el}}" class="_span data-v-73730ea8 _tags" wx:for="{{item.tagList}}" wx:for-index="el" wx:for-item="tag">{{tag}}</label></view>
+          <view class="_div data-v-73730ea8 tag_list"><label wx:key="el" key="{{el}}" class="_span data-v-73730ea8 _tags" wx:for="{{item.tagList}}" wx:for-index="el" wx:for-item="tag">{{tag}}</label></view>
         </view>
       </view>
     </view> <template data="{{...$root[$kk+'0'], $root}}" is="3c52e9f2"></template>

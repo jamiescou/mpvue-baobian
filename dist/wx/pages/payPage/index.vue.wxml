@@ -1,0 +1,7 @@
+<template name="4b71fe82">
+  <view class="_div data-v-7e21cd31 pages_pay_order">
+    <view class="_div data-v-7e21cd31 pay_money_input"><label class="_span data-v-7e21cd31 label_money">支付金额</label> <input type="number" value="{{payMoney}}" bindinput="handleProxy" placeholder="输入金额" placeholder-style="font-size: 30rpx;font-weight: 400;color: #CACACA" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_input data-v-7e21cd31" /></view>
+    <view class="_div data-v-7e21cd31 total_money">课程总额度：{{courseInfo.totalMoney}}</view>
+    <view class="_div data-v-7e21cd31 pay_submit" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">确认支付</view>
+  </view>
+</template>

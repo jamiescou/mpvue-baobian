@@ -1,0 +1,18 @@
+<import src="/components/upload.vue.wxml" />
+<import src="/components/editTable.vue.wxml" /><template name="ddad34f4">
+  <view class="_div data-v-68a82754 pages_my_info">
+    <view class="_div data-v-68a82754 myspace_container">
+      <view class="_div data-v-68a82754 myspace_bg">
+        <image src="/static/images/banner.jpg" alt class="_img data-v-68a82754"></image>
+        <view class="_div data-v-68a82754 user_info">
+          <view class="_div data-v-68a82754 user_avatar"><template width="144rpx" height="144rpx" max="1" bindchoosed="handleProxy" binddelete="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="3ebd416c"></template></view>
+          <view class="_div data-v-68a82754 nickname_">
+            {{userInfo.name}}
+          </view>
+          <view class="_div data-v-68a82754 user_desc"> 豹变学员 </view>
+        </view>
+      </view>
+      <view class="_div data-v-68a82754"><template data="{{...$root[$kk+'1'], $root}}" is="2aea93ab"></template></view>
+    </view>
+  </view>
+</template>
